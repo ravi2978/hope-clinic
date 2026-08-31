@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400&family=Manrope:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F8F4EB;font-family:'Manrope',system-ui,sans-serif}
+a{color:#0E6B54}a:hover{color:#2F3E64}
+.hi{font-family:'Noto Sans Devanagari','Manrope',sans-serif}
+.sr{font-family:'Newsreader',Georgia,serif}
+input,select,textarea{font-family:'Manrope',system-ui,sans-serif;font-size:15px;color:#23231F;background:#fff;border:1px solid rgba(47,62,100,.24);padding:13px 14px;width:100%;box-sizing:border-box;border-radius:0}
+input:focus,select:focus,textarea:focus{outline:2px solid rgba(176,134,60,.5);outline-offset:1px;border-color:#2F3E64}
+label{display:block;font-size:12.5px;font-weight:700;color:#23231F;margin-bottom:7px}
+button{font-family:'Manrope',system-ui,sans-serif;cursor:pointer;border:0}
+</style></helmet>
+
+<dc-import name="SiteHeader" active="book" hint-size="100%,150px"></dc-import>
+
+<div style="background:#2F3E64">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(28px,4.4vw,58px) clamp(18px,4vw,48px)">
+    <div style="font-size:clamp(10px,1.15vw,11.5px);letter-spacing:.24em;text-transform:uppercase;color:#B0863C;font-weight:700">Book · अपॉइंटमेंट बुक करें</div>
+    <h1 class="sr" style="font-weight:400;font-size:clamp(30px,4.8vw,58px);line-height:1.1;color:#F8F4EB;margin:12px 0 0">Request an appointment</h1>
+    <p style="font-size:clamp(14px,1.7vw,17px);line-height:1.75;color:rgba(248,244,235,.75);max-width:44em;margin:14px 0 0">Send a request and the clinic will call you back to confirm the time. Walk-ins are also seen, in the order they arrive.</p>
+  </div>
+</div>
+
+<div style="max-width:1280px;margin:0 auto;padding:clamp(28px,4vw,60px) clamp(18px,4vw,48px);display:flex;flex-wrap:wrap;gap:clamp(20px,3vw,44px);align-items:flex-start">
+  <div style="flex:1.7 1 420px;min-width:0">
+    <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+      <form onSubmit="{{ onSubmit }}" novalidate="novalidate">
+        <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+          <div style="border-left:3px solid #0E6B54;background:rgba(14,107,84,.07);padding:14px 18px;margin-bottom:24px">
+            <div style="font-size:14px;font-weight:700;color:#2F3E64">We need one thing before sending this</div>
+            <div style="font-size:14px;line-height:1.7;color:rgba(35,35,31,.8);margin-top:4px">{{ errorText }}</div>
+          </div>
+        </sc-if>
+        <div style="font-size:clamp(10px,1.15vw,11.5px);letter-spacing:.22em;text-transform:uppercase;color:#0E6B54;font-weight:700;padding-bottom:12px;border-bottom:1px solid rgba(47,62,100,.16)">Your details</div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:22px">
+          <div>
+            <label for="bk-name">Full name <span class="hi" style="font-weight:400;color:rgba(35,35,31,.5)">/ पूरा नाम</span></label>
+            <input id="bk-name" name="name" type="text" placeholder="Enter your name" autocomplete="name">
+          </div>
+          <div>
+            <label for="bk-phone">Phone number <span class="hi" style="font-weight:400;color:rgba(35,35,31,.5)">/ मोबाइल नंबर</span></label>
+            <input id="bk-phone" name="phone" type="tel" placeholder="10-digit mobile number" autocomplete="tel" style="border-color:{{ phoneBorder }}">
+            <sc-if value="{{ phoneBad }}" hint-placeholder-val="{{ false }}">
+              <div style="font-size:12.5px;font-weight:600;color:#0E6B54;margin-top:6px">Please add a 10-digit number we can reach you on.</div>
+            </sc-if>
+          </div>
+          <div>
+            <label for="bk-age">Age <span class="hi" style="font-weight:400;color:rgba(35,35,31,.5)">/ उम्र</span></label>
+            <input id="bk-age" name="age" type="number" min="0" max="120" placeholder="Years">
+          </div>
+          <div>
+            <label for="bk-city">City or village <span class="hi" style="font-weight:400;color:rgba(35,35,31,.5)">/ शहर या गाँव</span></label>
+            <input id="bk-city" name="city" type="text" placeholder="Where you are coming from">
+          </div>
+          <div>
+            <label for="bk-concern">Concern <span class="hi" style="font-weight:400;color:rgba(35,35,31,.5)">/ समस्या</span></label>
+            <select id="bk-concern" name="concern">
+              <sc-for list="{{ concerns }}" as="c" hint-placeholder-count="9">
+                <option value="{{ c }}">{{ c }}</option>
+              </sc-for>
+            </select>
+          </div>
+          <div>
+            <label for="bk-date">Preferred date <span class="hi" style="font-weight:400;color:rgba(35,35,31,.5)">/ तारीख</span></label>
+            <input id="bk-date" name="date" type="date">
+          </div>
+        </div>
+        <div style="margin-top:22px">
+          <div style="font-size:12.5px;font-weight:700;color:#23231F;margin-bottom:10px">Preferred slot <span class="hi" style="font-weight:400;color:rgba(35,35,31,.5)">/ पसंदीदा समय</span></div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px">
+            <sc-for list="{{ slots }}" as="sl" hint-placeholder-count="3">
+              <button type="button" onClick="{{ sl.on }}" style="text-align:left;border:1px solid {{ sl.border }};background:{{ sl.bg }};padding:14px 16px">
+                <div style="font-size:14.5px;font-weight:700;color:{{ sl.fg }}">{{ sl.label }}</div>
+                <div style="font-size:12.5px;color:{{ sl.sub }};margin-top:3px">{{ sl.time }}</div>
+              </button>
+            </sc-for>
+          </div>
+        </div>
+        <div style="margin-top:22px">
+          <label for="bk-notes">Anything else we should know</label>
+          <textarea id="bk-notes" name="notes" rows="4" placeholder="How long you have had the complaint, medicines you take now, earlier treatment."></textarea>
+        </div>
+        <div style="margin-top:26px;border-top:1px solid rgba(47,62,100,.16);padding-top:20px">
+          <div style="font-size:clamp(10px,1.15vw,11.5px);letter-spacing:.22em;text-transform:uppercase;color:#0E6B54;font-weight:700">This week</div>
+          <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:1px;margin-top:12px;background:rgba(47,62,100,.14);border:1px solid rgba(47,62,100,.14)">
+            <sc-for list="{{ week }}" as="w" hint-placeholder-count="7">
+              <div style="background:{{ w.bg }};padding:14px 4px;text-align:center">
+                <div style="font-size:12px;font-weight:700;color:{{ w.fg }}">{{ w.day }}</div>
+                <div style="font-size:11.5px;color:{{ w.subfg }};margin-top:5px">{{ w.hours }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:20px;margin-top:26px">
+          <button type="submit" style="background:#2F3E64;color:#F8F4EB;padding:16px 30px;font-size:15px;font-weight:700;box-shadow:inset 0 0 0 1px rgba(176,134,60,.55)" style-hover="background:#0E6B54">
+            Request appointment
+            <span class="hi" style="display:block;font-size:11.5px;font-weight:400;opacity:.7;margin-top:2px">अनुरोध भेजें</span>
+          </button>
+          <div style="font-size:14.5px;color:rgba(35,35,31,.7)">Or WhatsApp <a href="https://wa.me/917481908030" style="font-weight:700;text-decoration:none;border-bottom:1px solid #0E6B54">+91 7481 908 030</a></div>
+        </div>
+      </form>
+    </sc-if>
+
+    <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+      <div>
+        <div style="display:flex;align-items:center;gap:14px">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#0E6B54" stroke-width="1.3" style="flex:none"><path d="M12 3a9 9 0 100 18 9 9 0 000-18"></path><path d="M8 12.5l2.6 2.6L16 9.7"></path></svg>
+          <div class="sr" style="font-weight:400;font-size:clamp(26px,3.8vw,44px);line-height:1.15;color:#2F3E64">Request received</div>
+        </div>
+        <p style="font-size:clamp(14.5px,1.7vw,17px);line-height:1.8;color:rgba(35,35,31,.85);margin:18px 0 0;max-width:44em">The clinic will call you on {{ data.phone }} to confirm the time. Nothing is booked until that call. If you do not hear from us by evening, WhatsApp the clinic.</p>
+        <div style="border:1px solid rgba(47,62,100,.18);background:#fff;margin-top:26px">
+          <div style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#0E6B54;font-weight:700;padding:15px 20px;border-bottom:1px solid rgba(47,62,100,.14)">Your request</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))">
+            <sc-for list="{{ summary }}" as="r" hint-placeholder-count="6">
+              <div style="padding:15px 20px;border-bottom:1px solid rgba(47,62,100,.1)">
+                <div style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(35,35,31,.5);font-weight:600">{{ r.k }}</div>
+                <div style="font-size:15px;color:#23231F;margin-top:5px;font-weight:600">{{ r.v }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="padding:15px 20px;font-size:14.5px;color:rgba(35,35,31,.8)">₹200 per person, consultation and medicines included. Payable at the clinic.</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:26px">
+          <a href="https://wa.me/917481908030" style="text-decoration:none;padding:15px 26px;background:#0E6B54;color:#F8F4EB;font-size:15px;font-weight:700">WhatsApp the clinic</a>
+          <a href="https://maps.app.goo.gl/cbJ5e2ap1pZY3Nk4A" target="_blank" rel="noopener" style="text-decoration:none;padding:15px 26px;border:1px solid #2F3E64;color:#2F3E64;font-size:15px;font-weight:600">Get directions</a>
+          <button type="button" onClick="{{ reset }}" style="padding:15px 26px;border:1px solid rgba(47,62,100,.2);background:transparent;color:rgba(35,35,31,.6);font-size:15px">Send another request</button>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+
+  <div style="flex:1 1 300px;min-width:0;background:#fff;border:1px solid rgba(47,62,100,.16);padding:clamp(20px,2.4vw,30px);position:relative">
+    <div style="position:absolute;left:0;right:0;top:0;height:3px;background:#B0863C"></div>
+    <div style="font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#0E6B54;font-weight:700">The clinic</div>
+    <div class="sr" style="font-size:clamp(20px,2.2vw,26px);color:#2F3E64;margin-top:12px;line-height:1.3">Dr. Chandani Kumari</div>
+    <div style="font-size:14px;line-height:1.7;color:rgba(35,35,31,.65);margin-top:6px">Homoeopathic Physician<br>B.H.M.S. (B.U.) · Reg. No. 36342</div>
+    <div style="border-top:1px solid rgba(47,62,100,.14);margin-top:20px;padding-top:16px;font-size:15px;line-height:1.8;color:rgba(35,35,31,.85)">Hope Homeo Clinic<br>Jhanda Chowk, Khazanchi Road<br>Purnea – 854301, Bihar</div>
+    <div style="border-top:1px solid rgba(47,62,100,.14);margin-top:16px;padding-top:16px;display:flex;flex-direction:column;gap:10px">
+      <div style="display:flex;justify-content:space-between;gap:10px;font-size:14.5px;color:#23231F"><span style="color:rgba(35,35,31,.55)">Timings</span><span style="font-weight:600">10 am – 5 pm</span></div>
+      <div style="display:flex;justify-content:space-between;gap:10px;font-size:14.5px;color:#23231F"><span style="color:rgba(35,35,31,.55)">Days</span><span style="font-weight:600">Mon – Sat</span></div>
+      <div style="display:flex;justify-content:space-between;gap:10px;font-size:14.5px;color:#23231F"><span style="color:rgba(35,35,31,.55)">Sunday</span><span style="font-weight:600">Closed</span></div>
+      <div style="display:flex;justify-content:space-between;gap:10px;font-size:14.5px;color:#23231F"><span style="color:rgba(35,35,31,.55)">Fee</span><span style="font-weight:600">₹200, all inclusive</span></div>
+    </div>
+    <div style="border-top:1px solid rgba(47,62,100,.14);margin-top:16px;padding-top:16px;font-size:14px;line-height:1.75;color:rgba(35,35,31,.7)">Bring any reports you already have. For children, bring the immunisation card.</div>
+    <a href="https://maps.app.goo.gl/cbJ5e2ap1pZY3Nk4A" target="_blank" rel="noopener" style="display:inline-block;font-size:14px;font-weight:700;color:#0E6B54;text-decoration:none;border-bottom:1px solid #0E6B54;padding-bottom:3px;margin-top:16px">Get directions →</a>
+  </div>
+</div>
+
+<dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {sent: false, err: '', slot: 'Morning', data: null};
+
+  onSubmit = (e) => {
+    e.preventDefault();
+    const f = e.target.elements;
+    const val = (k) => (f[k] && f[k].value ? String(f[k].value).trim() : '');
+    const digits = val('phone').replace(/\D/g, '');
+    if (digits.length < 10) {
+      this.setState({err: 'phone'});
+      return;
+    }
+    this.setState({
+      sent: true, err: '',
+      data: {
+        name: val('name') || 'Not given',
+        phone: '+91 ' + digits.slice(-10),
+        age: val('age') || '—',
+        city: val('city') || '—',
+        concern: val('concern') || '—',
+        date: val('date') || 'Any day this week',
+        slot: this.state.slot,
+        notes: val('notes'),
+      },
+    });
+  };
+
+  renderVals() {
+    const s = this.state, d = s.data;
+    return {
+      onSubmit: this.onSubmit,
+      reset: () => this.setState({sent: false, err: '', data: null}),
+      showForm: !s.sent, sent: s.sent,
+      hasError: !!s.err, phoneBad: s.err === 'phone',
+      errorText: 'A phone number, so the clinic can call you back to confirm.',
+      phoneBorder: s.err === 'phone' ? '#0E6B54' : 'rgba(47,62,100,.24)',
+      data: d || {phone: ''},
+      summary: d ? [
+        {k: 'Name', v: d.name}, {k: 'Phone', v: d.phone},
+        {k: 'Concern', v: d.concern}, {k: 'Age', v: d.age},
+        {k: 'Preferred', v: d.date + ' · ' + d.slot}, {k: 'Coming from', v: d.city},
+      ] : [],
+      concerns: ['Hair fall', 'P.C.O.D.', 'Menstrual problems', 'Piles', 'Kidney stone', 'Joint pain', 'Skin conditions', 'Child health', 'Something else'],
+      slots: [
+        {label: 'Morning', time: '10 – 12'},
+        {label: 'Midday', time: '12 – 2'},
+        {label: 'Afternoon', time: '2 – 5'},
+      ].map(x => {
+        const on = s.slot === x.label;
+        return {
+          label: x.label, time: x.time,
+          on: () => this.setState({slot: x.label}),
+          bg: on ? '#2F3E64' : '#fff', fg: on ? '#F8F4EB' : '#23231F',
+          sub: on ? 'rgba(248,244,235,.65)' : 'rgba(35,35,31,.5)',
+          border: on ? '#2F3E64' : 'rgba(47,62,100,.24)',
+        };
+      }),
+      week: [['Mon', false], ['Tue', false], ['Wed', false], ['Thu', false], ['Fri', false], ['Sat', false], ['Sun', true]].map(([day, closed]) => ({
+        day, hours: closed ? 'Closed' : '10 – 5',
+        bg: closed ? 'rgba(47,62,100,.06)' : '#fff',
+        fg: closed ? 'rgba(35,35,31,.42)' : '#2F3E64',
+        subfg: closed ? 'rgba(35,35,31,.42)' : 'rgba(35,35,31,.62)',
+      })),
+    };
+  }
+}
+</script>
+</body>
+</html>

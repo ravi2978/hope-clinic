@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400&family=Manrope:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F8F4EB;font-family:'Manrope',system-ui,sans-serif}
+a{color:#0E6B54}a:hover{color:#2F3E64}
+.hi{font-family:'Noto Sans Devanagari','Manrope',sans-serif}
+.sr{font-family:'Newsreader',Georgia,serif}
+:target{scroll-margin-top:170px}
+</style></helmet>
+
+<dc-import name="SiteHeader" active="treatments" hint-size="100%,150px"></dc-import>
+
+<div style="background:#2F3E64">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(28px,4.4vw,58px) clamp(18px,4vw,48px)">
+    <div style="font-size:clamp(10px,1.15vw,11.5px);letter-spacing:.24em;text-transform:uppercase;color:#B0863C;font-weight:700">Treatments · उपचार</div>
+    <h1 class="sr" style="font-weight:400;font-size:clamp(30px,4.8vw,58px);line-height:1.1;color:#F8F4EB;margin:12px 0 0">Eight areas the clinic sees most</h1>
+    <p style="font-size:clamp(14px,1.7vw,17px);line-height:1.75;color:rgba(248,244,235,.75);max-width:44em;margin:14px 0 0">Each section below gives the symptoms patients usually come with, what happens at the consultation, what to bring, and the diet advice given alongside the remedy.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:8px 10px;margin-top:clamp(20px,2.6vw,32px)">
+      <sc-for list="{{ treatments }}" as="t" hint-placeholder-count="8">
+        <a href="{{ t.anchor }}" style="text-decoration:none;font-size:clamp(11.5px,1.3vw,13px);font-weight:600;color:rgba(248,244,235,.85);border:1px solid rgba(176,134,60,.5);padding:8px 13px" style-hover="background:#B0863C;color:#2F3E64">{{ t.en }}</a>
+      </sc-for>
+    </div>
+  </div>
+</div>
+
+<sc-for list="{{ treatments }}" as="t" hint-placeholder-count="4">
+  <div id="{{ t.slug }}" style="background:{{ t.bg }};border-bottom:1px solid rgba(47,62,100,.12)">
+    <div style="max-width:1280px;margin:0 auto;padding:clamp(30px,4.4vw,66px) clamp(18px,4vw,48px)">
+      <div style="display:flex;align-items:flex-start;gap:clamp(14px,2vw,24px)">
+        <div style="width:clamp(46px,4.6vw,64px);height:clamp(46px,4.6vw,64px);flex:none;background:rgba(176,134,60,.16);border-radius:50%;display:flex;align-items:center;justify-content:center">
+          <svg width="54%" height="54%" viewBox="0 0 24 24" fill="none" stroke="#2F3E64" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="{{ t.d }}"></path></svg>
+        </div>
+        <div style="flex:1">
+          <div style="display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline;justify-content:space-between">
+            <h2 class="sr" style="font-weight:400;font-size:clamp(26px,3.6vw,42px);line-height:1.12;color:#2F3E64;margin:0">{{ t.en }}</h2>
+            <div class="sr" style="font-size:clamp(14px,1.6vw,18px);color:rgba(176,134,60,.95)">{{ t.num }}</div>
+          </div>
+          <div class="hi" style="font-size:clamp(13px,1.5vw,16px);color:rgba(35,35,31,.6);margin-top:5px">{{ t.hi }}</div>
+        </div>
+      </div>
+      <p style="font-size:clamp(14.5px,1.7vw,17px);line-height:1.8;color:rgba(35,35,31,.85);max-width:46em;margin:clamp(16px,2vw,24px) 0 0">{{ t.what }}</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(18px,2.6vw,40px);margin-top:clamp(20px,2.8vw,36px)">
+        <div>
+          <div style="font-size:clamp(10px,1.15vw,11.5px);letter-spacing:.22em;text-transform:uppercase;color:#0E6B54;font-weight:700;padding-bottom:10px;border-bottom:1px solid rgba(47,62,100,.16)">Symptoms patients come with</div>
+          <sc-for list="{{ t.symptoms }}" as="sy" hint-placeholder-count="4">
+            <div style="display:flex;gap:12px;padding:clamp(10px,1.3vw,14px) 0;border-bottom:1px solid rgba(47,62,100,.1);font-size:clamp(13.5px,1.55vw,15.5px);line-height:1.65;color:rgba(35,35,31,.85)"><span style="color:#B0863C;font-weight:700">—</span><span>{{ sy }}</span></div>
+          </sc-for>
+        </div>
+        <div>
+          <div style="font-size:clamp(10px,1.15vw,11.5px);letter-spacing:.22em;text-transform:uppercase;color:#0E6B54;font-weight:700;padding-bottom:10px;border-bottom:1px solid rgba(47,62,100,.16)">What to bring</div>
+          <sc-for list="{{ t.bring }}" as="b" hint-placeholder-count="3">
+            <div style="display:flex;gap:12px;padding:clamp(10px,1.3vw,14px) 0;border-bottom:1px solid rgba(47,62,100,.1);font-size:clamp(13.5px,1.55vw,15.5px);line-height:1.65;color:rgba(35,35,31,.85)"><span style="color:#0E6B54;font-weight:700">✓</span><span>{{ b }}</span></div>
+          </sc-for>
+        </div>
+        <div>
+          <div style="background:#fff;border:1px solid rgba(47,62,100,.14);padding:clamp(18px,2.2vw,28px)">
+            <div style="font-size:clamp(10px,1.15vw,11.5px);letter-spacing:.22em;text-transform:uppercase;color:#0E6B54;font-weight:700">At the consultation</div>
+            <p style="font-size:clamp(13.5px,1.5vw,15.5px);line-height:1.8;color:rgba(35,35,31,.85);margin:10px 0 0">{{ t.consult }}</p>
+            <div style="height:1px;background:rgba(47,62,100,.14);margin:clamp(14px,1.8vw,20px) 0"></div>
+            <div style="font-size:clamp(10px,1.15vw,11.5px);letter-spacing:.22em;text-transform:uppercase;color:#0E6B54;font-weight:700">Follow-up</div>
+            <p style="font-size:clamp(13.5px,1.5vw,15.5px);line-height:1.8;color:rgba(35,35,31,.85);margin:10px 0 0">{{ t.follow }}</p>
+          </div>
+          <div style="background:#2F3E64;padding:clamp(18px,2.2vw,28px);margin-top:clamp(12px,1.5vw,18px)">
+            <div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:baseline">
+              <div style="font-size:clamp(10px,1.15vw,11.5px);letter-spacing:.22em;text-transform:uppercase;color:#B0863C;font-weight:700">Diet advice</div>
+              <a href="{{ t.dietHref }}" style="font-size:clamp(11.5px,1.25vw,13px);font-weight:700;color:#F8F4EB;text-decoration:none;border-bottom:1px solid rgba(176,134,60,.7);padding-bottom:2px">Full diet chart →</a>
+            </div>
+            <p style="font-size:clamp(13.5px,1.5vw,15.5px);line-height:1.8;color:rgba(248,244,235,.82);margin:10px 0 0">{{ t.diet }}</p>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:clamp(12px,1.8vw,20px);margin-top:clamp(20px,2.6vw,32px)">
+        <a href="book.dc.html" style="text-decoration:none;background:#2F3E64;color:#F8F4EB;padding:clamp(13px,1.4vw,17px) clamp(20px,2.4vw,30px);font-size:clamp(13px,1.4vw,15px);font-weight:700;box-shadow:inset 0 0 0 1px rgba(176,134,60,.55)" style-hover="background:#0E6B54">Book a consultation</a>
+        <div style="font-size:clamp(13px,1.45vw,15px);color:rgba(35,35,31,.7)">Medicines are dispensed at the clinic · <a href="tel:+917481908030" style="font-weight:700;text-decoration:none">Call +91 7481 908 030</a></div>
+      </div>
+    </div>
+  </div>
+</sc-for>
+
+<dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const SPECS = [
+  {en: 'Hair fall', hi: 'बालों का झड़ना', slug: 'hair-fall', d: 'M6 3.5c0 6-2 9-2 12.5M10 3.5c0 7-2 10-2 13.5M14 3.5c0 6 2 9 2 12.5M18 3.5c0 7 2 10 2 13.5'},
+  {en: 'P.C.O.D.', hi: 'पी.सी.ओ.डी.', slug: 'pcod', d: 'M12 4.5a7.5 7.5 0 100 15 7.5 7.5 0 000-15M9.5 9.5h0M14.5 10.5h0M11 14h0M14.8 14.2h0'},
+  {en: 'Menstrual problems', hi: 'महावारी समस्या', slug: 'menstrual', d: 'M12 3.5c0 0 5.5 6.2 5.5 10.2a5.5 5.5 0 01-11 0c0-4 5.5-10.2 5.5-10.2z'},
+  {en: 'Piles', hi: 'पाइल्स', slug: 'piles', d: 'M3.5 17c4.5-7 12.5-7 17 0M7 17c2.7-4 7.3-4 10 0M10.5 17c1-1.6 2-1.6 3 0'},
+  {en: 'Kidney stone', hi: 'किडनी स्टोन', slug: 'kidney-stone', d: 'M13.5 4.5c3 1 5 4.2 5 8.2s-3 7.8-6.8 7.8-5.7-2.8-5.7-5.7 2-3.8 3.8-4.8 2-2 1.2-3.8M12.2 12.6h0'},
+  {en: 'Joint pain', hi: 'जोड़ों का दर्द', slug: 'joint-pain', d: 'M4.5 7.5h5.5l4 9h5.5M9 4.5v6M15 13.5v6'},
+  {en: 'Skin conditions', hi: 'चर्म रोग', slug: 'skin', d: 'M4.5 5h15v14h-15zM7.5 9l3 3M12 9l3 3M9.5 14l3 3'},
+  {en: 'Child health', hi: 'शिशु रोग', slug: 'child-health', d: 'M12 4.5a2.4 2.4 0 100 4.8 2.4 2.4 0 000-4.8M8 20v-3.6a4 4 0 018 0V20M6 14.5l2.2-2M18 14.5l-2.2-2'},
+];
+
+const DETAIL = [
+  {what: 'Thinning or shedding that has continued for weeks or months, often with a change in scalp condition. Causes range from anaemia and thyroid problems to childbirth, illness or long stress.', symptoms: ['Hair coming out while combing or washing', 'Widening parting or thinning at the crown', 'Itching, flaking or an oily scalp', 'Brittle hair that breaks before it grows'], consult: 'Dr. Kumari looks at the scalp, asks how long the shedding has gone on, and takes a history of diet, periods, sleep, illness and recent medicines. Blood reports are reviewed if you have them.', follow: 'A review in four weeks, then usually monthly. Hair responds slowly, so change is judged over months rather than weeks.', diet: 'Protein at both meals, green leafy vegetables, one vitamin-C fruit daily. Avoid skipping meals and crash diets.', bring: ['Any blood report from the last six months', 'A list of medicines and supplements you take', 'A photograph of the parting, if the change is recent'], dietSlug: 'hair-fall'},
+  {what: 'Polycystic ovarian disease, where the ovaries do not release an egg regularly. It commonly shows up as irregular periods together with weight, skin or hair changes.', symptoms: ['Periods that come late, or are skipped', 'Weight gain that is hard to shift', 'Acne, or hair on the face and chin', 'Difficulty conceiving'], consult: 'The consultation covers cycle dates, weight history, family history and any scans or hormone reports. Remedy selection takes the whole picture into account, not the scan alone.', follow: 'Monthly, timed around your cycle, so the pattern can be followed over three to six cycles.', diet: 'Whole grains instead of maida, a protein at every meal, thirty minutes of walking. Avoid sugar and sweetened drinks.', bring: ['Ultrasound or hormone reports, if done', 'Dates of your last three periods', 'Any medicine already prescribed for P.C.O.D.'], dietSlug: 'pcod'},
+  {what: 'Pain, heavy or scanty bleeding, long gaps, or bleeding between periods. Many of these settle once the underlying pattern is understood.', symptoms: ['Cramping that stops normal work', 'Very heavy or very light flow', 'Clots, or bleeding for more than seven days', 'Mood or sleep changes before periods'], consult: 'You will be asked to recall the last three cycle dates, the flow, and the pain — where it sits and what eases it. Please bring any scan reports.', follow: 'One review per cycle for the first three cycles.', diet: 'Iron-rich food through the week, warm meals during the period, adequate water. Limit tea with meals.', bring: ['Dates of your last three periods', 'Any pelvic scan report', 'A note of the pain — where it starts and what eases it'], dietSlug: 'hair-fall'},
+  {what: 'Swollen veins in and around the anus, usually from long-standing constipation or straining. Most cases settle with treatment and a steady change in diet.', symptoms: ['Bleeding while passing stool', 'Pain, itching or a lump at the opening', 'A feeling of incomplete emptying', 'Discomfort on sitting for long'], consult: 'Bowel habit, water intake, diet and how long the complaint has lasted are all discussed. An examination is done only with your consent, and dietary advice is given alongside the remedy.', follow: 'Two weeks, then monthly. A diet chart is given at the first visit.', diet: 'Soaked figs or raisins in the morning, high-fibre meals, ten to twelve glasses of water. Avoid chillies, pickles and long straining.', bring: ['A note of your usual bowel habit', 'Any ointment or medicine used so far', 'Any earlier opinion you have been given'], dietSlug: 'piles'},
+  {what: 'Hard deposits that form in the kidney and may move into the ureter. Size and position, seen on ultrasound, decide what is possible.', symptoms: ['Sharp pain in the back or side that comes in waves', 'Burning or frequent urination', 'Blood in the urine', 'Nausea with the pain'], consult: 'Ultrasound reports are reviewed first. A large stone, or one that is blocking the flow, is referred to a specialist — that is said plainly at the first visit.', follow: 'Fortnightly during an episode, with a repeat scan as advised.', diet: 'Three litres of water spread through the day, lemon water, normal dietary calcium. Avoid very salty food and cola.', bring: ['Ultrasound or CT report showing stone size', 'Urine routine report, if done', 'A note of when the pain comes and how long it lasts'], dietSlug: 'kidney-stone'},
+  {what: 'Pain, stiffness or swelling in one or many joints, from wear, injury, or an inflammatory condition.', symptoms: ['Morning stiffness that eases with movement', 'Swelling or warmth over a joint', 'Pain climbing stairs or squatting', 'Pain that shifts from joint to joint'], consult: 'Which joints, at what time of day, and what makes the pain better or worse — cold, heat, rest, movement. These details guide the remedy closely.', follow: 'Three to four weeks, longer once the pain settles.', diet: 'Warm cooked food, turmeric with milk, gentle daily movement. Limit very cold and heavily fried food.', bring: ['X-ray or MRI report, if done', 'Blood reports such as RA factor or uric acid', 'A list of painkillers you use and how often'], dietSlug: 'arthritis'},
+  {what: 'Long-standing eczema, psoriasis, urticaria, fungal patches and acne. Skin complaints usually need patience and a steady course.', symptoms: ['Itching that disturbs sleep', 'Dry, scaling or cracked patches', 'Rash that comes and goes with seasons', 'Pigmentation left after healing'], consult: 'The consultation covers when the skin first changed, what worsens it, earlier ointments used, and family history. Photographs of a flare are useful.', follow: 'Monthly. Skin often looks worse before it improves, and this is explained at the start.', diet: 'Plenty of water, seasonal fruit, plain home food while the skin settles. Note and avoid foods that trigger a flare.', bring: ['Photographs of the skin during a flare', 'Names of creams and tablets used before', 'Any allergy or patch-test report'], dietSlug: 'skin'},
+  {what: 'Repeated colds and cough, poor appetite, weak digestion, bedwetting, and behaviour or sleep complaints in children.', symptoms: ['Falling ill every few weeks', 'Refusing food, or very slow weight gain', 'Frequent cold, cough or ear pain', 'Bedwetting past the usual age'], consult: 'Parents do most of the talking. Birth history, milestones, appetite, sleep and school life are covered. Doses for children are small and pleasant to take.', follow: 'Monthly, or sooner during an illness.', diet: 'Fixed meal times, milk and dal daily, fruit instead of packaged snacks. Avoid feeding while distracted by a screen.', bring: ['Immunisation card', 'Growth chart or weight record', 'A note of how often the child falls ill'], dietSlug: 'medicine-rules'},
+];
+
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      treatments: SPECS.map((s, i) => Object.assign({}, s, DETAIL[i], {
+        num: String(i + 1).padStart(2, '0'),
+        anchor: '#' + s.slug,
+        dietHref: 'diet-charts.dc.html#' + DETAIL[i].dietSlug,
+        bg: i % 2 === 0 ? '#F8F4EB' : '#fff',
+      })),
+    };
+  }
+}
+</script>
+</body>
+</html>

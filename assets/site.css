@@ -1,0 +1,103 @@
+/* Hope Homeo Clinic — site styles
+   Navy #2F3E64 · gold #B0863C · teal #0E6B54 · cream #F8F4EB · ink #23231F */
+
+/* ---------- base ---------- */
+html{scroll-behavior:smooth}
+body{margin:0;background:#F8F4EB;color:#23231F;font-family:'Manrope',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:#0E6B54;transition:color .18s ease}
+a:hover{color:#2F3E64}
+img{max-width:100%}
+.hi{font-family:'Noto Sans Devanagari','Manrope',sans-serif}
+.sr{font-family:'Newsreader',Georgia,serif}
+:target{scroll-margin-top:150px}
+
+/* ---------- layout utilities emitted by the original design ---------- */
+.fx{display:flex}.col{display:flex;flex-direction:column}.grid{display:grid}
+.ac{align-items:center}.jc{justify-content:center}.jb{justify-content:space-between}
+.f1{flex:1}.noshrink{flex-shrink:0}.wrap{flex-wrap:wrap}
+.fw5{font-weight:500}.fw6{font-weight:600}.fw7{font-weight:700}.fw8{font-weight:800}
+.fs11{font-size:11px}.fs12{font-size:12px}.fs13{font-size:13px}.fs14{font-size:14px}
+.fs15{font-size:15px}.fs16{font-size:16px}.fs20{font-size:20px}.fs22{font-size:22px}
+.upper{text-transform:uppercase}.tc{text-align:center}.nowrap{white-space:nowrap}
+.gap8{gap:8px}.gap10{gap:10px}.gap12{gap:12px}.gap16{gap:16px}.gap24{gap:24px}
+.m0{margin:0}.mt8{margin-top:8px}.mt12{margin-top:12px}.mt16{margin-top:16px}
+.mb8{margin-bottom:8px}.mb12{margin-bottom:12px}.mb16{margin-bottom:16px}
+.posrel{position:relative}.posabs{position:absolute}.round{border-radius:50%}
+.ohide{overflow:hidden}.bbox{box-sizing:border-box}.pointer{cursor:pointer}
+.w100{width:100%}.b0{border:none}
+
+/* ---------- forms ---------- */
+input,select,textarea{font-family:'Manrope',system-ui,sans-serif;font-size:16px;color:#23231F;background:#fff;border:1px solid rgba(47,62,100,.24);padding:13px 14px;width:100%;box-sizing:border-box;border-radius:0;transition:border-color .16s ease,box-shadow .16s ease}
+input:hover,select:hover,textarea:hover{border-color:rgba(47,62,100,.45)}
+input:focus,select:focus,textarea:focus{outline:2px solid rgba(176,134,60,.5);outline-offset:1px;border-color:#2F3E64}
+label{display:block;font-size:12.5px;font-weight:700;color:#23231F;margin-bottom:7px}
+button{font-family:'Manrope',system-ui,sans-serif;cursor:pointer;border:0;transition:background .18s ease,color .18s ease,border-color .18s ease,transform .18s ease}
+select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5 6 6.5 11 1.5' fill='none' stroke='%232F3E64' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:38px}
+input[aria-invalid="true"]{border-color:#0E6B54;background:rgba(14,107,84,.04)}
+.field-error{font-size:12.5px;font-weight:600;color:#0E6B54;margin-top:6px}
+.form-alert{border-left:3px solid #0E6B54;background:rgba(14,107,84,.07);padding:14px 18px;margin-bottom:24px}
+.form-alert-title{font-size:14px;font-weight:700;color:#2F3E64}
+.form-alert-body{font-size:14px;line-height:1.7;color:rgba(35,35,31,.8);margin-top:4px}
+button[disabled]{opacity:.6;cursor:progress}
+
+/* ---------- smoothness ---------- */
+a[href],button,.card-lift{transition:background .18s ease,color .18s ease,border-color .18s ease,box-shadow .22s ease,transform .22s ease}
+:focus-visible{outline:2px solid #B0863C;outline-offset:3px}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important}
+}
+
+/* ---------- header nav ---------- */
+.nav-toggle{display:none;background:transparent;padding:9px;line-height:0;border:1px solid rgba(47,62,100,.25)}
+.nav-toggle:hover{background:rgba(47,62,100,.06)}
+@media (max-width:900px){
+  .nav-toggle{display:inline-flex}
+  #site-nav{display:none!important;width:100%;flex-direction:column;align-items:stretch!important;gap:0!important;border-top:1px solid rgba(176,134,60,.35);margin-top:12px;padding-top:6px}
+  #site-nav.open{display:flex!important}
+  #site-nav>a{padding:13px 2px!important;border-bottom:1px solid rgba(47,62,100,.08)!important;font-size:14px!important}
+  #site-nav>a:last-child{text-align:center;margin-top:12px;border-bottom:0!important;padding:15px!important}
+}
+
+/* ---------- map ---------- */
+.map-wrap,.map-card,.photo-slot,.sent-card,.form-alert,.quick-actions{box-sizing:border-box}
+.map-wrap{position:relative}
+.map-card{position:absolute;top:14px;left:14px;right:14px;max-width:290px;background:#F8F4EB;border:1px solid rgba(176,134,60,.6);box-shadow:0 10px 30px -14px rgba(35,35,31,.5);padding:14px 16px}
+.map-card-name{font-family:'Newsreader',Georgia,serif;font-size:16px;font-weight:600;letter-spacing:.1em;color:#2F3E64;line-height:1.2}
+.map-card-addr{font-size:12.5px;line-height:1.6;color:rgba(35,35,31,.72);margin-top:6px}
+.map-card-link{display:inline-block;margin-top:10px;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#0E6B54;text-decoration:none;border-bottom:1px solid #0E6B54;padding-bottom:2px}
+@media (max-width:520px){.map-card{position:static;max-width:none;border-left:0;border-right:0;box-shadow:none}}
+
+/* ---------- floating call / whatsapp ---------- */
+.quick-actions{display:none;position:fixed;right:16px;bottom:16px;z-index:60;flex-direction:column;gap:10px}
+.quick-actions a{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px -8px rgba(35,35,31,.55);text-decoration:none}
+.qa-wa{background:#25D366}
+.qa-call{background:#2F3E64}
+.quick-actions a:hover{transform:translateY(-2px) scale(1.04)}
+@media (max-width:900px){.quick-actions{display:flex}}
+
+/* ---------- booking success ---------- */
+.sent-card{background:#fff;border:1px solid rgba(176,134,60,.5);padding:clamp(22px,3vw,38px)}
+.sent-rows{margin-top:20px;border-top:1px solid rgba(47,62,100,.14)}
+.sent-row{display:flex;justify-content:space-between;gap:18px;padding:11px 0;border-bottom:1px solid rgba(47,62,100,.1);font-size:14px}
+.sent-row span:first-child{color:rgba(35,35,31,.55);font-weight:600}
+.sent-row span:last-child{color:#2F3E64;font-weight:700;text-align:right}
+.wa-send{display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#0b3d1f;text-decoration:none;padding:15px 24px;font-size:15px;font-weight:700;margin-top:22px}
+.wa-send:hover{background:#1eb959;color:#0b3d1f}
+.btn-ghost{display:inline-block;margin-top:14px;margin-left:14px;font-size:14px;font-weight:600;color:#0E6B54;background:none;padding:15px 4px}
+
+/* ---------- clinic photo placeholder ---------- */
+.photo-slot{width:100%;height:clamp(220px,24vw,320px);background:#EFE9DC;border:1px solid rgba(176,134,60,.4);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;padding:24px}
+.photo-slot img{width:64px;height:64px;object-fit:contain;opacity:.85}
+.photo-slot span{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:rgba(47,62,100,.6);font-weight:700}
+
+/* ---------- skip link ---------- */
+.skip-link{position:absolute;left:-9999px;top:0;background:#2F3E64;color:#F8F4EB;padding:12px 20px;z-index:100;font-weight:700;font-size:14px}
+.skip-link:focus{left:0;color:#F8F4EB}
+
+/* hover states recovered from the original design */
+.hv0:hover{background:#0E6B54}
+.hv1:hover{background:#C69646}
+.hv2:hover{transform:translateY(-3px);box-shadow:0 14px 30px -18px rgba(47,62,100,.5)}
+.hv3:hover{background:#2F3E64;border-color:#2F3E64}
+.hv4:hover{background:#B0863C;color:#2F3E64}

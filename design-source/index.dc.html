@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400&family=Manrope:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+body{margin:0;background:#F8F4EB;font-family:'Manrope',system-ui,sans-serif}
+a{color:#0E6B54}a:hover{color:#2F3E64}
+.hi{font-family:'Noto Sans Devanagari','Manrope',sans-serif}
+.sr{font-family:'Newsreader',Georgia,serif}
+image-slot{--is-bg:#EFE9DC;--is-fg:#2F3E64}
+</style></helmet>
+
+<dc-import name="SiteHeader" active="home" hint-size="100%,150px"></dc-import>
+
+<div style="background:#2F3E64;position:relative;overflow:hidden">
+  <div style="position:absolute;inset:0;background:radial-gradient(120% 90% at 88% 6%, rgba(176,134,60,.22), transparent 60%)"></div>
+  <div style="position:relative;max-width:1280px;margin:0 auto;padding:clamp(38px,5.5vw,88px) clamp(18px,4vw,48px) clamp(38px,5vw,78px);display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:clamp(28px,4vw,64px);align-items:center">
+    <div>
+      <div style="display:flex;align-items:center;gap:12px">
+        <div style="width:clamp(26px,3.4vw,46px);height:1px;background:#B0863C"></div>
+        <div style="font-size:clamp(10px,1.2vw,12px);letter-spacing:.24em;text-transform:uppercase;color:#B0863C;font-weight:600">Purnea, Bihar</div>
+      </div>
+      <h1 class="sr" style="font-weight:400;font-size:clamp(34px,5.4vw,68px);line-height:1.07;letter-spacing:-.015em;color:#F8F4EB;margin:clamp(16px,2vw,26px) 0 0;text-wrap:pretty">Homoeopathic care, given <span style="font-style:italic;color:#B0863C">the time it needs</span></h1>
+      <p style="font-size:clamp(14.5px,1.7vw,18px);line-height:1.75;color:rgba(248,244,235,.78);max-width:38em;margin:clamp(14px,1.8vw,22px) 0 0">Dr. Chandani Kumari sees every patient herself at Jhanda Chowk, Purnea. Each consultation begins with a full case history, and medicines are dispensed at the clinic.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(10px,1.2vw,14px);margin-top:clamp(22px,3vw,36px)">
+        <a href="book.dc.html" style="text-decoration:none;background:#B0863C;color:#2F3E64;padding:clamp(14px,1.6vw,18px) clamp(20px,2.6vw,32px);font-size:clamp(13px,1.5vw,15px);font-weight:700;letter-spacing:.03em" style-hover="background:#C69646">
+          Book appointment
+          <span class="hi" style="display:block;font-size:clamp(10.5px,1.15vw,12px);font-weight:400;opacity:.75;margin-top:2px">अपॉइंटमेंट बुक करें</span>
+        </a>
+        <a href="tel:+917481908030" style="text-decoration:none;padding:clamp(14px,1.6vw,18px) clamp(20px,2.6vw,32px);border:1px solid rgba(248,244,235,.4);color:#F8F4EB;font-size:clamp(13px,1.5vw,15px);font-weight:600;letter-spacing:.03em">
+          Call +91 7481 908 030
+          <span class="hi" style="display:block;font-size:clamp(10.5px,1.15vw,12px);font-weight:400;opacity:.6;margin-top:2px">अभी कॉल करें</span>
+        </a>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(14px,2.6vw,34px);margin-top:clamp(26px,3.6vw,44px);padding-top:clamp(18px,2.2vw,26px);border-top:1px solid rgba(248,244,235,.16)">
+        <sc-for list="{{ trust }}" as="tr" hint-placeholder-count="3">
+          <div>
+            <div class="sr" style="font-size:clamp(20px,2.6vw,30px);color:#B0863C;line-height:1.1">{{ tr.big }}</div>
+            <div style="font-size:clamp(11px,1.25vw,13px);color:rgba(248,244,235,.6);margin-top:4px;letter-spacing:.04em">{{ tr.sub }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="border:1px solid rgba(176,134,60,.4);background:rgba(248,244,235,.05);padding:clamp(20px,2.6vw,34px)">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
+        <div style="width:22px;height:1px;background:#B0863C;flex:none"></div>
+        <div style="font-size:clamp(10px,1.05vw,11.5px);letter-spacing:.18em;text-transform:uppercase;color:#B0863C;font-weight:700;white-space:nowrap">Clinic at a glance</div>
+      </div>
+      <sc-for list="{{ glance }}" as="g" hint-placeholder-count="4">
+        <div style="padding:clamp(13px,1.6vw,19px) 0;border-bottom:1px solid rgba(248,244,235,.13)">
+          <div style="font-size:clamp(10.5px,1.15vw,12px);letter-spacing:.14em;text-transform:uppercase;color:rgba(248,244,235,.5);font-weight:600">{{ g.k }}</div>
+          <div class="sr" style="font-size:clamp(18px,2.2vw,25px);line-height:1.3;color:#F8F4EB;margin-top:6px">{{ g.v }}</div>
+          <div style="font-size:clamp(12px,1.35vw,13.5px);line-height:1.6;color:rgba(248,244,235,.6);margin-top:4px">{{ g.note }}</div>
+        </div>
+      </sc-for>
+      <a href="https://maps.app.goo.gl/cbJ5e2ap1pZY3Nk4A" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;margin-top:clamp(16px,2vw,22px);font-size:clamp(12.5px,1.4vw,14px);font-weight:700;color:#B0863C;text-decoration:none;border-bottom:1px solid rgba(176,134,60,.6);padding-bottom:3px">Get directions <span>→</span></a>
+    </div>
+  </div>
+</div>
+
+<div style="max-width:1280px;margin:0 auto;padding:clamp(34px,5vw,80px) clamp(18px,4vw,48px) clamp(28px,4vw,60px)">
+  <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:flex-end">
+    <div>
+      <div style="font-size:clamp(10px,1.15vw,11.5px);letter-spacing:.24em;text-transform:uppercase;color:#0E6B54;font-weight:700">Specialities</div>
+      <h2 class="sr" style="font-weight:400;font-size:clamp(26px,4vw,44px);line-height:1.15;color:#2F3E64;margin:10px 0 0">What the clinic treats</h2>
+      <div class="hi" style="font-size:clamp(12.5px,1.5vw,15px);line-height:1.7;color:rgba(35,35,31,.6);margin-top:6px;max-width:52em">विशेषज्ञ — बालों का झड़ना, पी.सी.ओ.डी., महावारी समस्या, पाइल्स, किडनी स्टोन, जोड़ों का दर्द, चर्म रोग, शिशु रोग आदि।</div>
+    </div>
+    <a href="treatments.dc.html" style="font-size:clamp(12.5px,1.4vw,14px);font-weight:700;color:#0E6B54;text-decoration:none;border-bottom:1px solid #0E6B54;padding-bottom:3px;white-space:nowrap">All treatments →</a>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:clamp(10px,1.2vw,16px);margin-top:clamp(22px,3vw,38px)">
+    <sc-for list="{{ specialities }}" as="s" hint-placeholder-count="8">
+      <a href="{{ s.href }}" style="text-decoration:none;background:#fff;border:1px solid rgba(47,62,100,.13);padding:clamp(18px,2.2vw,28px);display:block;transition:transform .18s ease,box-shadow .18s ease" style-hover="transform:translateY(-3px);box-shadow:0 14px 30px -18px rgba(47,62,100,.5)">
+        <div style="width:clamp(40px,4vw,52px);height:clamp(40px,4vw,52px);background:rgba(176,134,60,.14);display:flex;align-items:center;justify-content:center;border-radius:50%">
+          <svg width="58%" height="58%" viewBox="0 0 24 24" fill="none" stroke="#2F3E64" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="{{ s.d }}"></path></svg>
+        </div>
+        <div class="sr" style="font-size:clamp(17px,1.9vw,21px);color:#2F3E64;margin-top:clamp(14px,1.7vw,20px);line-height:1.25">{{ s.en }}</div>
+        <div class="hi" style="font-size:clamp(12px,1.3vw,13.5px);color:rgba(35,35,31,.58);margin-top:5px">{{ s.hi }}</div>
+        <div style="height:1px;background:rgba(47,62,100,.12);margin:clamp(12px,1.5vw,18px) 0"></div>
+        <div style="font-size:clamp(12px,1.3vw,13.5px);line-height:1.6;color:rgba(35,35,31,.68)">{{ s.blurb }}</div>
+        <div style="font-size:clamp(11px,1.2vw,12.5px);font-weight:700;color:#0E6B54;margin-top:12px;letter-spacing:.04em">Read more →</div>
+      </a>
+    </sc-for>
+  </div>
+</div>
+
+<div style="background:#fff;border-top:1px solid rgba(47,62,100,.12);border-bottom:1px solid rgba(47,62,100,.12)">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(34px,5vw,80px) clamp(18px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(28px,4.4vw,70px);align-items:center">
+    <div>
+      <img src="assets/doctor-portrait.png" alt="Dr. Chandani Kumari at Hope Homeo Clinic" style="width:100%;height:clamp(280px,38vw,520px);object-fit:cover;object-position:50% 20%;display:block;position:relative">
+    </div>
+    <div>
+      <div style="font-size:clamp(10px,1.15vw,11.5px);letter-spacing:.24em;text-transform:uppercase;color:#0E6B54;font-weight:700">The doctor</div>
+      <h2 class="sr" style="font-weight:400;font-size:clamp(28px,4.2vw,48px);line-height:1.12;color:#2F3E64;margin:10px 0 0">Dr. Chandani Kumari</h2>
+      <div style="font-size:clamp(13px,1.5vw,15.5px);letter-spacing:.08em;text-transform:uppercase;color:#B0863C;font-weight:600;margin-top:10px">Homoeopathic Physician</div>
+      <div style="display:flex;flex-wrap:wrap;gap:clamp(16px,3vw,40px);margin-top:clamp(18px,2.2vw,26px);padding:clamp(14px,1.8vw,20px) 0;border-top:1px solid rgba(47,62,100,.14);border-bottom:1px solid rgba(47,62,100,.14)">
+        <div>
+          <div style="font-size:clamp(10px,1.1vw,11.5px);letter-spacing:.14em;text-transform:uppercase;color:rgba(35,35,31,.5);font-weight:600">Qualification</div>
+          <div class="sr" style="font-size:clamp(16px,1.8vw,20px);color:#2F3E64;margin-top:5px">B.H.M.S. (B.U.)</div>
+        </div>
+        <div>
+          <div style="font-size:clamp(10px,1.1vw,11.5px);letter-spacing:.14em;text-transform:uppercase;color:rgba(35,35,31,.5);font-weight:600">Registration</div>
+          <div class="sr" style="font-size:clamp(16px,1.8vw,20px);color:#2F3E64;margin-top:5px">Reg. No. 36342</div>
+        </div>
+      </div>
+      <p style="font-size:clamp(14.5px,1.7vw,17px);line-height:1.8;color:rgba(35,35,31,.85);margin:clamp(16px,2vw,24px) 0 0;max-width:40em">A first consultation usually runs longer than patients expect, because the history matters as much as the complaint. Sleep, appetite, past illness and family history all shape which remedy is chosen. Medicines are dispensed at the clinic and the next follow-up is fixed before you leave.</p>
+      <a href="about.dc.html" style="display:inline-block;margin-top:clamp(18px,2.2vw,26px);font-size:clamp(12.5px,1.4vw,14px);font-weight:700;color:#0E6B54;text-decoration:none;border-bottom:1px solid #0E6B54;padding-bottom:3px">About the clinic →</a>
+    </div>
+  </div>
+</div>
+
+<div style="background:#2F3E64">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(30px,4.4vw,64px) clamp(18px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:clamp(20px,3vw,44px)">
+    <sc-for list="{{ stats }}" as="t" hint-placeholder-count="3">
+      <div style="border-left:1px solid rgba(176,134,60,.4);padding-left:clamp(16px,2vw,24px)">
+        <div class="sr" style="font-size:clamp(28px,4vw,44px);line-height:1.1;color:#B0863C">{{ t.big }}</div>
+        <div style="font-size:clamp(13px,1.5vw,15px);line-height:1.65;color:rgba(248,244,235,.72);margin-top:8px">{{ t.sub }}</div>
+      </div>
+    </sc-for>
+  </div>
+</div>
+
+<div style="max-width:1280px;margin:0 auto;padding:clamp(34px,5vw,80px) clamp(18px,4vw,48px)">
+  <div style="font-size:clamp(10px,1.15vw,11.5px);letter-spacing:.24em;text-transform:uppercase;color:#0E6B54;font-weight:700">How a visit works</div>
+  <h2 class="sr" style="font-weight:400;font-size:clamp(26px,4vw,44px);line-height:1.15;color:#2F3E64;margin:10px 0 0">Three steps, no surprises</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:clamp(20px,3vw,44px);margin-top:clamp(24px,3.4vw,44px)">
+    <sc-for list="{{ steps }}" as="st" hint-placeholder-count="3">
+      <div style="border-top:2px solid #2F3E64;padding-top:clamp(16px,2vw,22px)">
+        <div class="sr" style="font-size:clamp(34px,4.6vw,52px);line-height:1;color:#B0863C">{{ st.n }}</div>
+        <div class="sr" style="font-size:clamp(20px,2.3vw,26px);line-height:1.3;color:#2F3E64;margin-top:clamp(10px,1.3vw,16px)">{{ st.t }}</div>
+        <div class="hi" style="font-size:clamp(12px,1.3vw,13.5px);color:rgba(35,35,31,.55);margin-top:5px">{{ st.hi }}</div>
+        <p style="font-size:clamp(13.5px,1.5vw,15.5px);line-height:1.75;color:rgba(35,35,31,.8);margin:clamp(10px,1.3vw,14px) 0 0">{{ st.b }}</p>
+      </div>
+    </sc-for>
+  </div>
+</div>
+
+<div style="background:#fff;border-top:1px solid rgba(47,62,100,.12);border-bottom:1px solid rgba(47,62,100,.12)">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(34px,5vw,80px) clamp(18px,4vw,48px)">
+    <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:flex-end">
+      <div>
+        <div style="font-size:clamp(10px,1.15vw,11.5px);letter-spacing:.24em;text-transform:uppercase;color:#0E6B54;font-weight:700">Cases from the clinic</div>
+        <h2 class="sr" style="font-weight:400;font-size:clamp(26px,4vw,44px);line-height:1.15;color:#2F3E64;margin:10px 0 0">In patients’ words</h2>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px">
+        <div style="font-size:clamp(11px,1.2vw,12.5px);letter-spacing:.14em;text-transform:uppercase;color:rgba(35,35,31,.45);font-weight:600">Shared with permission · results vary</div>
+        <div style="display:flex;gap:6px">
+          <button type="button" onClick="{{ scrollPrev }}" aria-label="Previous cases" style="cursor:pointer;border:1px solid rgba(47,62,100,.25);background:transparent;width:38px;height:38px;display:flex;align-items:center;justify-content:center" style-hover="background:#2F3E64;border-color:#2F3E64">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" style="color:#2F3E64"><path d="M15 5l-7 7 7 7"></path></svg>
+          </button>
+          <button type="button" onClick="{{ scrollNext }}" aria-label="More cases" style="cursor:pointer;border:1px solid rgba(47,62,100,.25);background:transparent;width:38px;height:38px;display:flex;align-items:center;justify-content:center" style-hover="background:#2F3E64;border-color:#2F3E64">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" style="color:#2F3E64"><path d="M9 5l7 7-7 7"></path></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div ref="{{ railRef }}" style="display:flex;gap:clamp(14px,1.8vw,24px);margin-top:clamp(22px,3vw,38px);overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:14px">
+      <sc-for list="{{ quotes }}" as="q" hint-placeholder-count="5">
+        <div style="flex:0 0 clamp(268px,26vw,360px);scroll-snap-align:start;border:1px solid rgba(47,62,100,.14);padding:clamp(20px,2.4vw,30px);background:#F8F4EB;display:flex;flex-direction:column">
+          <div class="sr" style="font-size:clamp(30px,3.4vw,40px);line-height:.7;color:#B0863C">“</div>
+          <div class="sr" style="font-size:clamp(14.5px,1.55vw,17px);line-height:1.7;font-style:italic;color:#23231F;margin-top:clamp(10px,1.3vw,14px);flex:1">{{ q.q }}</div>
+          <div style="height:1px;background:rgba(47,62,100,.14);margin:clamp(14px,1.8vw,20px) 0"></div>
+          <div style="font-size:clamp(12px,1.3vw,13.5px);font-weight:700;color:#2F3E64;letter-spacing:.04em">{{ q.who }}</div>
+          <div style="font-size:clamp(11.5px,1.25vw,13px);color:#0E6B54;font-weight:600;margin-top:3px">{{ q.for }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+
+<div style="max-width:1280px;margin:0 auto;padding:clamp(34px,5vw,80px) clamp(18px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(24px,3.4vw,52px);align-items:center">
+  <a href="https://maps.app.goo.gl/cbJ5e2ap1pZY3Nk4A" target="_blank" rel="noopener" aria-label="Open Hope Homeo Clinic in Google Maps" style="display:block;line-height:0">
+    <iframe src="https://maps.google.com/maps?q=Hope%20Homeo%20Clinic%2C%20Jhanda%20Chowk%2C%20Khazanchi%20Road%2C%20Purnea%2C%20Bihar%20854301&amp;z=16&amp;output=embed" title="Map showing Hope Homeo Clinic, Jhanda Chowk, Khazanchi Road, Purnea" loading="lazy" style="width:100%;height:clamp(220px,26vw,360px);border:0;display:block;filter:saturate(.88)"></iframe>
+  </a>
+  <div>
+    <div style="font-size:clamp(10px,1.15vw,11.5px);letter-spacing:.24em;text-transform:uppercase;color:#0E6B54;font-weight:700">Finding us</div>
+    <h2 class="sr" style="font-weight:400;font-size:clamp(24px,3.4vw,40px);line-height:1.18;color:#2F3E64;margin:10px 0 0">Two minutes from Jhanda Chowk</h2>
+    <p style="font-size:clamp(14px,1.6vw,16.5px);line-height:1.8;color:rgba(35,35,31,.85);margin:14px 0 0;max-width:38em">Take Khazanchi Road from the chowk and walk about two minutes. The clinic board is on the left, beside the market lane.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(18px,2.4vw,28px)">
+      <a href="https://maps.app.goo.gl/cbJ5e2ap1pZY3Nk4A" target="_blank" rel="noopener" style="text-decoration:none;background:#2F3E64;color:#F8F4EB;padding:clamp(13px,1.4vw,17px) clamp(20px,2.4vw,30px);font-size:clamp(13px,1.4vw,15px);font-weight:700;box-shadow:inset 0 0 0 1px rgba(176,134,60,.55)">Get directions</a>
+      <a href="book.dc.html" style="text-decoration:none;padding:clamp(13px,1.4vw,17px) clamp(20px,2.4vw,30px);border:1px solid rgba(47,62,100,.28);color:#2F3E64;font-size:clamp(13px,1.4vw,15px);font-weight:600">Book a visit</a>
+    </div>
+  </div>
+</div>
+
+<dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const SPECS = [
+  {en: 'Hair fall', hi: 'बालों का झड़ना', slug: 'hair-fall', blurb: 'Shedding, thinning and scalp complaints, looked at alongside diet and blood reports.', d: 'M6 3.5c0 6-2 9-2 12.5M10 3.5c0 7-2 10-2 13.5M14 3.5c0 6 2 9 2 12.5M18 3.5c0 7 2 10 2 13.5'},
+  {en: 'P.C.O.D.', hi: 'पी.सी.ओ.डी.', slug: 'pcod', blurb: 'Irregular cycles with weight, skin or hair changes, followed over several cycles.', d: 'M12 4.5a7.5 7.5 0 100 15 7.5 7.5 0 000-15M9.5 9.5h0M14.5 10.5h0M11 14h0M14.8 14.2h0'},
+  {en: 'Menstrual problems', hi: 'महावारी समस्या', slug: 'menstrual', blurb: 'Pain, heavy or scanty bleeding, long gaps and premenstrual complaints.', d: 'M12 3.5c0 0 5.5 6.2 5.5 10.2a5.5 5.5 0 01-11 0c0-4 5.5-10.2 5.5-10.2z'},
+  {en: 'Piles', hi: 'पाइल्स', slug: 'piles', blurb: 'Bleeding, pain and itching from long-standing constipation, managed with diet.', d: 'M3.5 17c4.5-7 12.5-7 17 0M7 17c2.7-4 7.3-4 10 0M10.5 17c1-1.6 2-1.6 3 0'},
+  {en: 'Kidney stone', hi: 'किडनी स्टोन', slug: 'kidney-stone', blurb: 'Colicky pain and burning urination, reviewed against your ultrasound report.', d: 'M13.5 4.5c3 1 5 4.2 5 8.2s-3 7.8-6.8 7.8-5.7-2.8-5.7-5.7 2-3.8 3.8-4.8 2-2 1.2-3.8M12.2 12.6h0'},
+  {en: 'Joint pain', hi: 'जोड़ों का दर्द', slug: 'joint-pain', blurb: 'Stiffness and swelling, with close attention to what eases and worsens it.', d: 'M4.5 7.5h5.5l4 9h5.5M9 4.5v6M15 13.5v6'},
+  {en: 'Skin conditions', hi: 'चर्म रोग', slug: 'skin', blurb: 'Eczema, psoriasis, urticaria, fungal patches and acne of long standing.', d: 'M4.5 5h15v14h-15zM7.5 9l3 3M12 9l3 3M9.5 14l3 3'},
+  {en: 'Child health', hi: 'शिशु रोग', slug: 'child-health', blurb: 'Repeated colds, poor appetite, weak digestion and bedwetting in children.', d: 'M12 4.5a2.4 2.4 0 100 4.8 2.4 2.4 0 000-4.8M8 20v-3.6a4 4 0 018 0V20M6 14.5l2.2-2M18 14.5l-2.2-2'},
+];
+
+class Component extends DCLogic {
+  railRef = React.createRef();
+
+  railIndex = 0;
+
+  nudge(dir) {
+    const el = this.railRef.current;
+    if (!el) return;
+    const card = el.firstElementChild;
+    if (!card) return;
+    const gap = parseFloat(getComputedStyle(el).columnGap) || 20;
+    const step = card.getBoundingClientRect().width + gap;
+    const maxIndex = Math.max(0, Math.ceil((el.scrollWidth - el.clientWidth) / step));
+    this.railIndex = Math.min(maxIndex, Math.max(0, this.railIndex + dir));
+    el.scrollTo({left: Math.min(this.railIndex * step, el.scrollWidth - el.clientWidth), behavior: 'smooth'});
+  }
+
+  renderVals() {
+    return {
+      railRef: this.railRef,
+      scrollPrev: () => this.nudge(-1),
+      scrollNext: () => this.nudge(1),
+      specialities: SPECS.map(s => Object.assign({}, s, {href: 'treatments.dc.html#' + s.slug})),
+      trust: [
+        {big: 'B.H.M.S.', sub: 'Qualified physician'},
+        {big: '36342', sub: 'Registration number'},
+        {big: '6 days', sub: 'Open every week'},
+      ],
+      glance: [
+        {k: 'Timings', v: '10:00 am – 5:00 pm', note: 'Monday to Saturday · Sunday closed'},
+        {k: 'Address', v: 'Jhanda Chowk, Khazanchi Road', note: 'Purnea – 854301, Bihar'},
+        {k: 'Consultation', v: 'By appointment or walk-in', note: 'Walk-in patients are seen in order of arrival'},
+        {k: 'Medicines', v: 'Dispensed at the clinic', note: 'Nothing separate to buy outside'},
+      ],
+      stats: [
+        {big: 'One doctor', sub: 'Dr. Kumari sees every patient herself, at the first visit and at every follow-up.'},
+        {big: 'Mon – Sat', sub: 'Six days a week, with continuous hours. The clinic does not close in the afternoon.'},
+        {big: '10 – 5', sub: 'Patients already waiting at closing time are seen before the clinic shuts.'},
+      ],
+      steps: [
+        {n: '01', t: 'Book or walk in', hi: 'बुक करें या सीधे आएँ', b: 'Request a time on this site or on WhatsApp, or simply come to the clinic during opening hours.'},
+        {n: '02', t: 'A detailed consultation', hi: 'विस्तार से परामर्श', b: 'Dr. Kumari takes a full history — the complaint, sleep, appetite, past illness — before deciding on a remedy.'},
+        {n: '03', t: 'Medicines at the clinic', hi: 'दवाएँ क्लिनिक में', b: 'Medicines are dispensed here and the next follow-up is fixed before you leave.'},
+      ],
+      quotes: [
+        {q: 'I was suffering from severe pain and swelling in multiple joints, especially my fingers, ankles, hands, and feet. Daily activities had become very difficult. After taking treatment at Hope Homeo Clinic, I noticed significant relief in pain, stiffness, and swelling within one month. I am very satisfied with the treatment and care provided.', who: 'Rheumatoid arthritis', for: 'Relief within one month'},
+        {q: 'My 8-year-old child had ringworm lesions all over the body, including the face. We were worried because the infection was spreading rapidly. After starting homeopathic treatment at Hope Homeo Clinic, the lesions gradually disappeared, and my child recovered completely within 4 weeks. Thank you for the effective treatment.', who: 'Ringworm in an 8-year-old', for: 'Recovered within four weeks'},
+        {q: 'My son developed patchy hair loss, which affected his confidence. We started homeopathic treatment at Hope Homeo Clinic and noticed gradual hair regrowth. Within one and a half months, the bald patches showed remarkable improvement. We are very happy with the results.', who: 'Alopecia areata in a 16-year-old', for: 'Regrowth within six weeks'},
+        {q: 'I was diagnosed with kidney stones in both kidneys and experienced recurrent discomfort. After taking homeopathic treatment from Hope Homeo Clinic, my symptoms improved significantly, and follow-up reports showed good progress. Within 2 months, the condition improved remarkably. I am grateful for the treatment and guidance.', who: 'Stones in both kidneys', for: 'Improvement within two months'},
+        {q: 'I was suffering from persistent white discharge (leucorrhoea) along with PCOD. After starting treatment at Hope Homeo Clinic, the leucorrhoea improved completely within one month. Follow-up ultrasound also showed a reduction in the size of the ovarian cyst. My treatment is continuing, and I am satisfied with the progress so far.', who: 'Leucorrhoea with P.C.O.D.', for: 'Treatment continuing'},
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

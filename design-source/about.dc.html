@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,300;1,6..72,400&family=Manrope:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+body{margin:0;background:#F8F4EB;font-family:'Manrope',system-ui,sans-serif}
+a{color:#0E6B54}a:hover{color:#2F3E64}
+.hi{font-family:'Noto Sans Devanagari','Manrope',sans-serif}
+.sr{font-family:'Newsreader',Georgia,serif}
+image-slot{--is-bg:#EFE9DC;--is-fg:#2F3E64}
+</style></helmet>
+
+<dc-import name="SiteHeader" active="about" hint-size="100%,150px"></dc-import>
+
+<div style="background:#2F3E64">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(28px,4.4vw,58px) clamp(18px,4vw,48px)">
+    <div style="font-size:clamp(10px,1.15vw,11.5px);letter-spacing:.24em;text-transform:uppercase;color:#B0863C;font-weight:700">About the clinic</div>
+    <h1 class="sr" style="font-weight:400;font-size:clamp(30px,4.8vw,58px);line-height:1.1;color:#F8F4EB;margin:12px 0 0">About Hope Homeo Clinic</h1>
+    <p style="font-size:clamp(14px,1.7vw,17px);line-height:1.75;color:rgba(248,244,235,.75);max-width:44em;margin:14px 0 0">Hope Homeo Clinic is located at Jhanda Chowk, on Khazanchi Road in Purnea. Dr. Chandani Kumari sees every patient herself, six days a week, and dispenses medicines at the clinic.</p>
+  </div>
+</div>
+
+<div style="background:#fff">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(30px,4.6vw,70px) clamp(18px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(26px,4vw,64px);align-items:start">
+    <div>
+      <img src="assets/doctor-portrait.png" alt="Dr. Chandani Kumari, Homoeopathic Physician" style="width:100%;height:clamp(300px,40vw,540px);object-fit:cover;object-position:50% 20%;display:block;position:relative">
+    </div>
+    <div>
+      <h2 class="sr" style="font-weight:400;font-size:clamp(26px,4vw,42px);line-height:1.14;color:#2F3E64;margin:0">Dr. Chandani Kumari</h2>
+      <div style="font-size:clamp(13px,1.5vw,15.5px);letter-spacing:.08em;text-transform:uppercase;color:#B0863C;font-weight:600;margin-top:10px">Homoeopathic Physician · B.H.M.S. (B.U.) · Reg. No. 36342</div>
+      <p style="font-size:clamp(14.5px,1.7vw,17px);line-height:1.8;color:rgba(35,35,31,.85);margin:clamp(16px,2vw,24px) 0 0;max-width:40em">Dr. Kumari qualified in homoeopathic medicine and has practised in Purnea since. The clinic keeps to one doctor and one consulting room, so there is enough time in every appointment to take a proper history.</p>
+      <p style="font-size:clamp(14.5px,1.7vw,17px);line-height:1.8;color:rgba(35,35,31,.85);margin:14px 0 0;max-width:40em">Medicines are dispensed at the clinic, so there is nothing separate to buy outside. If a complaint needs a specialist or hospital care, you are told at the first visit and referred, rather than kept on treatment for months.</p>
+      <a href="book.dc.html" style="display:inline-block;text-decoration:none;margin-top:clamp(20px,2.6vw,30px);background:#2F3E64;color:#F8F4EB;padding:clamp(13px,1.4vw,17px) clamp(20px,2.4vw,30px);font-size:clamp(13px,1.4vw,15px);font-weight:700;box-shadow:inset 0 0 0 1px rgba(176,134,60,.55)" style-hover="background:#0E6B54">Book an appointment</a>
+    </div>
+  </div>
+</div>
+
+<div style="max-width:1280px;margin:0 auto;padding:clamp(30px,4.6vw,70px) clamp(18px,4vw,48px)">
+  <div style="font-size:clamp(10px,1.15vw,11.5px);letter-spacing:.24em;text-transform:uppercase;color:#0E6B54;font-weight:700">In plain language</div>
+  <h2 class="sr" style="font-weight:400;font-size:clamp(26px,4vw,42px);line-height:1.15;color:#2F3E64;margin:10px 0 0">What homoeopathy is, and what it is not</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(20px,3vw,44px);margin-top:clamp(22px,3vw,38px)">
+    <sc-for list="{{ aboutParas }}" as="p" hint-placeholder-count="3">
+      <p style="font-size:clamp(14px,1.6vw,16px);line-height:1.85;color:rgba(35,35,31,.85);margin:0;border-top:2px solid #B0863C;padding-top:clamp(14px,1.8vw,20px)">{{ p }}</p>
+    </sc-for>
+  </div>
+</div>
+
+<div style="background:#2F3E64">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(30px,4.6vw,66px) clamp(18px,4vw,48px)">
+    <h2 class="sr" style="font-weight:400;font-size:clamp(24px,3.6vw,38px);line-height:1.2;color:#F8F4EB;margin:0 0 clamp(18px,2.6vw,30px)">Credentials</h2>
+    <sc-for list="{{ credentials }}" as="c" hint-placeholder-count="3">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:clamp(14px,2.6vw,40px);padding:clamp(16px,2.2vw,26px) 0;border-top:1px solid rgba(176,134,60,.35)">
+        <div class="sr" style="font-size:clamp(22px,3vw,34px);color:#B0863C;line-height:1.1">{{ c.y }}</div>
+        <div style="grid-column:span 2">
+          <div style="font-size:clamp(14px,1.7vw,17px);font-weight:700;color:#F8F4EB">{{ c.t }}</div>
+          <div style="font-size:clamp(13px,1.5vw,15px);line-height:1.7;color:rgba(248,244,235,.7);margin-top:6px">{{ c.s }}</div>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</div>
+
+<div style="background:#fff;border-top:1px solid rgba(47,62,100,.12)">
+  <div style="max-width:1280px;margin:0 auto;padding:clamp(30px,4.6vw,70px) clamp(18px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(20px,3.2vw,48px);align-items:center">
+    <div>
+      <div style="font-size:clamp(10px,1.15vw,11.5px);letter-spacing:.24em;text-transform:uppercase;color:#0E6B54;font-weight:700">The clinic</div>
+      <h2 class="sr" style="font-weight:400;font-size:clamp(24px,3.6vw,38px);line-height:1.18;color:#2F3E64;margin:10px 0 0">Where you will be seen</h2>
+      <p style="font-size:clamp(13.5px,1.6vw,16px);line-height:1.8;color:rgba(35,35,31,.8);margin:12px 0 0;max-width:36em">One consulting room at Jhanda Chowk, on Khazanchi Road. Medicines are dispensed here, so there is nothing to buy outside.</p>
+      <a href="contact.dc.html" style="display:inline-block;margin-top:clamp(16px,2vw,24px);font-size:clamp(12.5px,1.4vw,14px);font-weight:700;color:#0E6B54;text-decoration:none;border-bottom:1px solid #0E6B54;padding-bottom:3px">Directions and timings →</a>
+    </div>
+    <image-slot id="v3-about-clinic" shape="rect" radius="0" fit="cover" placeholder="One clinic photograph — whichever you are happiest with." style="width:100%;height:clamp(220px,24vw,320px);display:block"></image-slot>
+  </div>
+</div>
+
+<dc-import name="SiteFooter" hint-size="100%,520px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      aboutParas: [
+        'Homoeopathy works from the whole picture of a patient rather than the complaint alone. Two people with the same diagnosis may be given different remedies, because the way an illness shows itself differs from person to person.',
+        'Remedies are prepared from plant, mineral and animal sources in very small, repeatedly diluted doses. They are taken as small pills or drops, usually for a defined period, and reviewed at each follow-up.',
+        'Views on how effective homoeopathy is differ, and this clinic makes no claim to cure named diseases. What is offered is a careful consultation, a remedy chosen for your case, and an honest referral when a complaint needs a specialist or hospital care.',
+      ],
+      credentials: [
+        {y: 'B.H.M.S.', t: 'Degree in homoeopathic medicine', s: 'Awarded by B.U. Full undergraduate training in homoeopathic medicine, anatomy, physiology and clinical practice.'},
+        {y: '36342', t: 'Registered homoeopathic physician', s: 'Practising under registration number 36342.'},
+        {y: 'Purnea', t: 'Hope Homeo Clinic, Jhanda Chowk', s: 'Single-doctor practice on Khazanchi Road, open six days a week.'},
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
