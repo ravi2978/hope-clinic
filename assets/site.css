@@ -52,12 +52,23 @@ a[href],button,.card-lift{transition:background .18s ease,color .18s ease,border
 /* ---------- header nav ---------- */
 .nav-toggle{display:none;background:transparent;padding:9px;line-height:0;border:1px solid rgba(47,62,100,.25)}
 .nav-toggle:hover{background:rgba(47,62,100,.06)}
+/* The sticky header carries a Book appointment button on phones, so claw back
+   a row: the email is in the footer and on /contact, and is not the thing
+   anyone taps from a phone. */
+@media (max-width:600px){
+  #site-header a[href^="mailto:"]{display:none}
+}
 @media (max-width:900px){
-  .nav-toggle{display:inline-flex}
-  #site-nav{display:none!important;width:100%;flex-direction:column;align-items:stretch!important;gap:0!important;border-top:1px solid rgba(176,134,60,.35);margin-top:12px;padding-top:6px}
-  #site-nav.open{display:flex!important}
-  #site-nav>a{padding:13px 2px!important;border-bottom:1px solid rgba(47,62,100,.08)!important;font-size:14px!important}
-  #site-nav>a:last-child{text-align:center;margin-top:12px;border-bottom:0!important;padding:15px!important}
+  .nav-toggle{display:inline-flex;order:3}
+  /* Collapsed: keep only the Book appointment button beside the menu icon,
+     so there is always one visible way to book without opening the menu. */
+  #site-nav{display:flex!important;align-items:center;order:2;gap:0!important}
+  #site-nav>a:not(:last-child){display:none}
+  #site-nav>a:last-child{padding:11px 17px!important;font-size:12.5px!important}
+  /* Opened: full-width list on its own row below the header. */
+  #site-nav.open{width:100%;order:4;flex-direction:column;align-items:stretch!important;border-top:1px solid rgba(176,134,60,.35);margin-top:12px;padding-top:6px}
+  #site-nav.open>a{display:block;padding:13px 2px!important;border-bottom:1px solid rgba(47,62,100,.08)!important;font-size:14px!important}
+  #site-nav.open>a:last-child{text-align:center;margin-top:12px;border-bottom:0!important;padding:15px!important}
 }
 
 /* ---------- map ---------- */
