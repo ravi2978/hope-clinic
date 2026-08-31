@@ -55,9 +55,14 @@
     if (e) e.remove();
   }
 
-  /* Deliver to Web3Forms (email) and, if configured, a Google Sheet.
-     Returns true only when the email actually went through. */
+  /* Primary route: a Google Apps Script in the clinic's own account, which
+     emails the clinic and logs the booking to a sheet. Apps Script does not
+     send CORS headers, so the reply cannot be read — the request still
+     arrives, and the WhatsApp button stays on screen either way.
+     Secondary route: Web3Forms, if a key is configured.
+     Resolves true when at least one route was dispatched. */
   function deliver(subject, fields) {
+    var sent = false;
     if (CFG.sheetEndpoint) {
       try {
         fetch(CFG.sheetEndpoint, {
@@ -65,9 +70,10 @@
           headers: { 'Content-Type': 'text/plain;charset=utf-8' },
           body: JSON.stringify(fields),
         }).catch(function () {});
+        sent = true;
       } catch (e) {}
     }
-    if (!CFG.web3formsKey) return Promise.resolve(false);
+    if (!CFG.web3formsKey) return Promise.resolve(sent);
     var payload = Object.assign({
       access_key: CFG.web3formsKey,
       subject: subject,
@@ -79,8 +85,8 @@
       body: JSON.stringify(payload),
     })
       .then(function (r) { return r.json(); })
-      .then(function (j) { return !!j.success; })
-      .catch(function () { return false; });
+      .then(function (j) { return sent || !!j.success; })
+      .catch(function () { return sent; });
   }
 
   function waLink(text) {

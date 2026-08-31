@@ -38,22 +38,26 @@ Deep links work too, e.g. `/treatments#pcod`, `/diet-charts#thyroid`,
 
 ## What happens when someone books
 
-1. The form checks there is a name and a 10-digit phone number.
-2. It emails the details to `hopehomeoclinic15@gmail.com` via Web3Forms.
-3. If a Google Sheet endpoint is configured, it also appends a row.
+1. The form checks there is a name, a 10-digit phone number, an age, and a
+   chosen concern — plus a written reason if that concern is "Something else".
+2. It posts to a Google Apps Script running in the clinic's own Google
+   account, which emails `hopehomeoclinic15@gmail.com` and appends a row to
+   a spreadsheet. The email carries **Call back** and **WhatsApp** buttons
+   wired to the patient's number.
+3. If a Web3Forms key is also configured, it emails through that as well.
 4. The patient sees a confirmation with everything they entered, and a
    **Send on WhatsApp** button that opens their WhatsApp with the booking
    pre-typed to +91 7481 908 030.
 
-If the email key is not configured, or the network call fails, the
-confirmation makes WhatsApp the primary action instead — so a booking is
-never silently lost.
+If nothing is configured, or a network call fails, the confirmation makes
+WhatsApp the primary action instead — so a booking is never silently lost.
 
 ## Editing
 
 | To change | Edit |
 |---|---|
 | Booking notifications, phone, WhatsApp number | `assets/config.js` |
+| Notification email layout, sheet columns | `google-sheet-script.gs` |
 | Colours, spacing, hover, mobile nav, map card | `assets/site.css` |
 | Form behaviour, validation, menu | `assets/site.js` |
 | Page text | that page's `index.html` |

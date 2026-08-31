@@ -5,35 +5,64 @@ Nothing here needs a developer, and nothing costs money.
 
 ---
 
-## 1. Make bookings arrive in your email (10 minutes) — **required**
+## 1. Make bookings reach you (20 minutes) — **required**
 
-Right now a patient can fill in the booking form, but the email
-half of the delivery is switched off until you paste in a key.
-(The WhatsApp button already works without any setup.)
+Right now a patient can fill in the booking form, but only the WhatsApp
+button actually delivers it. This step makes every request email you
+automatically, and log itself to a spreadsheet, whether or not the patient
+taps WhatsApp.
 
-1. Go to **https://web3forms.com**
-2. Type `hopehomeoclinic15@gmail.com` in the box and press **Create Access Key**
-3. Check that Gmail inbox — Web3Forms sends you an access key
-   (a long code like `a1b2c3d4-e5f6-...`)
-4. Open the file **`assets/config.js`** in this repository
-5. Paste the key between the empty quotes on the `web3formsKey` line:
+This runs entirely inside your own Google account. No third-party form
+service, nothing to sign up for, no monthly limit to run out of.
+
+1. Create a new sheet at **https://sheets.new**, name it `Hope Homeo Bookings`
+2. **Extensions → Apps Script**
+3. Delete whatever is in the editor and paste the whole contents of
+   **`google-sheet-script.gs`** from this repository
+4. Press **Save**, then in the function dropdown at the top pick
+   **`testNotification`** and press **Run**. Google will ask you to authorise
+   it — click through *Advanced → Go to (project name)* if it warns about an
+   unverified app; it is your own script.
+   **Check `hopehomeoclinic15@gmail.com` — a test booking email should arrive.**
+   If it does, the hard part is done.
+5. **Deploy → New deployment** → gear icon → **Web app**
+   - *Execute as:* **Me**
+   - *Who has access:* **Anyone**  ← must be "Anyone", or the website cannot post to it
+6. **Deploy**, then copy the **Web app URL** (it ends in `/exec`)
+7. Open **`assets/config.js`** in this repository and paste it in:
 
    ```js
-   web3formsKey: "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+   sheetEndpoint: "https://script.google.com/macros/s/AKfy.../exec",
    ```
 
-6. Save, commit, push. Within a minute the live site starts emailing you
-   every appointment request and every contact enquiry.
+8. Save, commit, push. Within a minute the live site starts emailing you
+   every appointment request and logging it to the sheet.
 
-**Test it:** open your live `/book` page, submit a booking with your own
-number, and check the inbox. The email arrives with the patient's name,
-phone, age, city, concern, preferred date and slot, and their notes.
+**Test it:** open https://hopehomeoclinic.com/book, submit a booking with
+your own number, and check both the inbox and the spreadsheet.
 
-Free tier is 250 submissions/month — far more than this clinic will use.
+Every notification email has **Call back** and **WhatsApp** buttons wired to
+the patient's number, so you can reply straight from your phone.
 
 ---
 
-## 2. Check the WhatsApp route (2 minutes)
+## 2. Email via Web3Forms — optional second route
+
+`assets/config.js` also has a `web3formsKey` line. It is a belt-and-braces
+alternative to step 1, not a replacement.
+
+Get a free key at **https://web3forms.com** by entering
+`hopehomeoclinic15@gmail.com`; they email you an access key to paste in.
+The key is public by design — Web3Forms' own documentation says it is safe
+to expose in the page — so it is fine to commit.
+
+Worth knowing: the free plan only accepts requests from real browsers, and
+it could not be verified end to end from outside one. Step 1 has no such
+restriction and is the route to trust. Leave this blank if you prefer.
+
+---
+
+## 3. Check the WhatsApp route (2 minutes)
 
 No setup needed; confirm it behaves the way you want.
 
@@ -43,30 +72,8 @@ No setup needed; confirm it behaves the way you want.
   the whole booking already typed out, addressed to +91 7481 908 030.
   They press send; it lands in your chat with their number attached.
 
-Open `/book` on your phone, submit a test booking, and tap the button.
-
----
-
-## 3. Log every booking to a Google Sheet (15 minutes) — optional
-
-Gives you a searchable list of enquiries instead of only an inbox.
-
-1. Create a new sheet at **https://sheets.new**, name it `Hope Homeo Bookings`
-2. **Extensions → Apps Script**
-3. Delete whatever is in the editor and paste the whole contents of
-   **`google-sheet-script.gs`** (in this repository)
-4. **Deploy → New deployment** → gear icon → **Web app**
-   - *Execute as:* **Me**
-   - *Who has access:* **Anyone**  ← must be "Anyone", or the site cannot post to it
-5. **Deploy**, authorise when Google asks, then copy the **Web app URL**
-   (it ends in `/exec`)
-6. Paste it into `assets/config.js` on the `sheetEndpoint` line:
-
-   ```js
-   sheetEndpoint: "https://script.google.com/macros/s/AKfy.../exec",
-   ```
-
-7. Save, commit, push.
+Open https://hopehomeoclinic.com/book on your phone, submit a test booking,
+and tap the button.
 
 ---
 
@@ -95,6 +102,11 @@ Certificate is Let's Encrypt, renewed by GitHub automatically.
 ---
 
 ## 5. Put the clinic on Google Maps (20 minutes) — **the highest-value step**
+
+> Everything to paste into the form — name, categories, description,
+> services, hours, photo checklist — is written out in
+> **`google-business-profile.md`** in this repository. Open that alongside
+> this step.
 
 The map on the site is pinned to your exact location
 (25.777687, 87.486572 — on Khazanchi Road, beside Khazanchi Hat) and is
