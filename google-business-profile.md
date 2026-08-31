@@ -171,6 +171,11 @@ only on the card the site draws over it.
 
 ## Fee
 
-**₹200 is the consultation fee.** Medicines are dispensed at the clinic and
-charged separately. Deliberately left out of the description above — Google
-has its own price fields, and a fee in the description dates quickly.
+**₹200 is the consultation fee.** A follow-up within 45 days is free; after
+45 days it is charged as a fresh consultation. Medicines are dispensed at the
+clinic and charged separately.
+
+Deliberately left out of the description above — Google has its own price
+fields, and a fee in the description dates quickly. Worth adding under
+**Services** as a note if Google offers a price field there, since a free
+follow-up is unusual and patients compare on it.

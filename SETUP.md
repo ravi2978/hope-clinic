@@ -141,10 +141,11 @@ this website will show the clinic's real name too, automatically.
 
 ## Things worth confirming before you share the site widely
 
-- **Consultation fee ₹200** — confirmed as the consultation only. Medicines
-  are dispensed at the clinic and charged separately; the site says so on
-  `/fees`, `/book`, `/about` and the home page. If you ever want the medicine
-  cost shown as well, tell me the figure and I will add it.
+- **Fees** — ₹200 for the consultation; a follow-up within 45 days is free;
+  after 45 days it is charged as a fresh consultation. Medicines are
+  dispensed at the clinic and charged separately. Shown on `/fees`, `/book`
+  and in the search-result descriptions. If you want the medicine cost shown
+  too, tell me the figure and I will add it.
 - **Patient testimonials** on the home page describe specific outcomes
   (rheumatoid arthritis, ringworm, alopecia, kidney stones, PCOD). The
   original design notes call them written examples rather than real
