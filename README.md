@@ -30,8 +30,8 @@ the clean addresses — `hopehomeoclinic.com/about`, not `/about.html`. Every
 static host serves it this way, so the site is not tied to GitHub Pages.
 
 Links between pages and to `assets/` are **relative**, never absolute, so the
-same files work unchanged at `ravi2978.github.io/hope-clinic/` and at a bare
-custom domain. Do not change them to start with `/`.
+same files work unchanged at the live domain and at `ravi2978.github.io/hope-clinic/`.
+Do not change them to start with `/`.
 
 Deep links work too, e.g. `/treatments#pcod`, `/diet-charts#thyroid`,
 `/fees#faq`.
@@ -81,9 +81,10 @@ from it, and nothing there needs to be edited to change the website.
 
 ## Hosting
 
-Any static host serves this. On GitHub Pages: **Settings → Pages → Deploy
-from a branch → `main` / `(root)`**. The site then appears at
-`https://ravi2978.github.io/hope-clinic/` until a custom domain is mapped.
+Live at **https://hopehomeoclinic.com** — GitHub Pages, from `main` / `(root)`,
+with the domain registered at Namecheap. `www` redirects to the apex, and the
+`CNAME` file in this repository is what binds the domain: do not delete it.
+Any other static host would serve these files unchanged.
 
 ## Details used throughout
 

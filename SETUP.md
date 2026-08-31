@@ -70,32 +70,27 @@ Gives you a searchable list of enquiries instead of only an inbox.
 
 ---
 
-## 4. Point your domain at the site (once you have bought it)
+## 4. Domain — done
 
-GitHub Pages serves the site free on your own domain, with HTTPS.
+The site is live at **https://hopehomeoclinic.com**, and
+`www.hopehomeoclinic.com` redirects to it. Recorded here in case it ever
+needs rebuilding.
 
-1. In the repository: **Settings → Pages → Custom domain**, type the domain,
-   **Save**. Tick **Enforce HTTPS** once it becomes available (up to 24 h).
-2. At your registrar (GoDaddy, Namecheap, BigRock, Hostinger…), add these
-   DNS records — replace `USERNAME` with your GitHub username:
+Namecheap **Domain List -> Manage -> Advanced DNS -> Host Records**:
 
-   | Type  | Name  | Value                     |
-   |-------|-------|---------------------------|
-   | A     | `@`   | `185.199.108.153`         |
-   | A     | `@`   | `185.199.109.153`         |
-   | A     | `@`   | `185.199.110.153`         |
-   | A     | `@`   | `185.199.111.153`         |
-   | CNAME | `www` | `USERNAME.github.io.`     |
+| Type  | Host  | Value                 |
+|-------|-------|-----------------------|
+| A     | `@`   | `185.199.108.153`     |
+| A     | `@`   | `185.199.109.153`     |
+| A     | `@`   | `185.199.110.153`     |
+| A     | `@`   | `185.199.111.153`     |
+| CNAME | `www` | `ravi2978.github.io.` |
 
-3. DNS takes 15 minutes to a few hours.
-4. **Then tell me the domain** — the `<link rel="canonical">` tags,
-   `sitemap.xml`, `robots.txt` and the structured data currently say
-   `https://ravi2978.github.io/hope-clinic`. They must be changed to the real
-   domain or Google will keep indexing the old address. It is a one-line
-   change and a rebuild.
+GitHub: **Settings -> Pages**, source `main` / `(root)`, custom domain
+`hopehomeoclinic.com`, **Enforce HTTPS** ticked. The `CNAME` file in the
+repository root holds the domain — deleting it unbinds the site.
 
-Page links and asset paths are relative, so they keep working at both
-addresses with no change — only the canonical URLs above need updating.
+Certificate is Let's Encrypt, renewed by GitHub automatically.
 
 ---
 
