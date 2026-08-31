@@ -107,6 +107,18 @@
     });
     paintSlots();
 
+    // "Something else" is not a reason, so ask what the reason actually is.
+    var concernEl = bookForm.elements.concern;
+    var otherWrap = $('#bk-other-wrap');
+    var otherEl = bookForm.elements.otherConcern;
+    function syncOther() {
+      var show = concernEl.value === 'Something else';
+      otherWrap.hidden = !show;
+      if (show) { otherEl.focus(); } else { otherEl.value = ''; clearBad(otherEl); }
+    }
+    concernEl.addEventListener('change', syncOther);
+    syncOther();
+
     // Don't offer dates in the past, or Sundays (clinic closed).
     var dateEl = bookForm.elements.date;
     if (dateEl) dateEl.min = new Date().toISOString().slice(0, 10);
@@ -117,21 +129,37 @@
       var v = function (k) { return f[k] && f[k].value ? String(f[k].value).trim() : ''; };
       var ok = true;
 
-      clearBad(f.name); clearBad(f.phone); clearAlert(bookForm);
+      [f.name, f.phone, f.age, f.concern, f.otherConcern].forEach(clearBad);
+      clearAlert(bookForm);
+
       if (!v('name')) { markBad(f.name, 'Please tell us your name.'); ok = false; }
+
       var d = digits(v('phone'));
       if (d.length < 10) { markBad(f.phone, 'Please add a 10-digit number we can reach you on.'); ok = false; }
+
+      var age = v('age');
+      if (!age) { markBad(f.age, 'Please add an age.'); ok = false; }
+      else if (Number(age) < 0 || Number(age) > 120) { markBad(f.age, 'Please check the age.'); ok = false; }
+
+      if (!v('concern')) { markBad(f.concern, 'Please choose what the appointment is for.'); ok = false; }
+      else if (v('concern') === 'Something else' && !v('otherConcern')) {
+        markBad(f.otherConcern, 'Please tell us what the concern is.'); ok = false;
+      }
+
       if (!ok) {
         showAlert(bookForm, 'We need a little more before sending this',
-          'A name and a phone number, so the clinic can call you back to confirm.');
+          'The clinic needs a name, a phone number to call back on, an age, and what the appointment is for.');
         return;
       }
 
       var phone = '+91 ' + d.slice(-10);
       var when = (v('date') || 'Any day this week') + ' · ' + slot;
+      var concern = v('concern') === 'Something else'
+        ? 'Something else — ' + v('otherConcern')
+        : v('concern');
       var data = {
-        Name: v('name'), Phone: phone, Age: v('age') || '—',
-        City: v('city') || '—', Concern: v('concern') || '—',
+        Name: v('name'), Phone: phone, Age: v('age'),
+        City: v('city') || '—', Concern: concern,
         Preferred: when, Notes: v('notes') || '—',
       };
 

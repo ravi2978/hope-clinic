@@ -59,21 +59,26 @@ button{font-family:'Manrope',system-ui,sans-serif;cursor:pointer;border:0}
             <input id="bk-age" name="age" type="number" min="0" max="120" placeholder="Years">
           </div>
           <div>
-            <label for="bk-city">City or village <span class="hi" style="font-weight:400;color:rgba(35,35,31,.5)">/ शहर या गाँव</span></label>
+            <label for="bk-city">City or village <span class="hi" style="font-weight:400;color:rgba(35,35,31,.5)">/ शहर या गाँव</span> <span style="font-weight:400;color:rgba(35,35,31,.42)">optional</span></label>
             <input id="bk-city" name="city" type="text" placeholder="Where you are coming from">
           </div>
           <div>
             <label for="bk-concern">Concern <span class="hi" style="font-weight:400;color:rgba(35,35,31,.5)">/ समस्या</span></label>
             <select id="bk-concern" name="concern">
+              <option value="">Please choose one</option>
               <sc-for list="{{ concerns }}" as="c" hint-placeholder-count="9">
                 <option value="{{ c }}">{{ c }}</option>
               </sc-for>
             </select>
           </div>
           <div>
-            <label for="bk-date">Preferred date <span class="hi" style="font-weight:400;color:rgba(35,35,31,.5)">/ तारीख</span></label>
+            <label for="bk-date">Preferred date <span class="hi" style="font-weight:400;color:rgba(35,35,31,.5)">/ तारीख</span> <span style="font-weight:400;color:rgba(35,35,31,.42)">optional</span></label>
             <input id="bk-date" name="date" type="date">
           </div>
+        </div>
+        <div id="bk-other-wrap" hidden style="margin-top:18px">
+          <label for="bk-other">What is the concern? <span class="hi" style="font-weight:400;color:rgba(35,35,31,.5)">/ समस्या क्या है</span></label>
+          <input id="bk-other" name="otherConcern" type="text" placeholder="Thyroid, migraine, allergy, digestion, weakness…" autocomplete="off">
         </div>
         <div style="margin-top:22px">
           <div style="font-size:12.5px;font-weight:700;color:#23231F;margin-bottom:10px">Preferred slot <span class="hi" style="font-weight:400;color:rgba(35,35,31,.5)">/ पसंदीदा समय</span></div>
@@ -87,7 +92,7 @@ button{font-family:'Manrope',system-ui,sans-serif;cursor:pointer;border:0}
           </div>
         </div>
         <div style="margin-top:22px">
-          <label for="bk-notes">Anything else we should know</label>
+          <label for="bk-notes">Anything else we should know <span style="font-weight:400;color:rgba(35,35,31,.42)">optional</span></label>
           <textarea id="bk-notes" name="notes" rows="4" placeholder="How long you have had the complaint, medicines you take now, earlier treatment."></textarea>
         </div>
         <div style="margin-top:26px;border-top:1px solid rgba(47,62,100,.16);padding-top:20px">
