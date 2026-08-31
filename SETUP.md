@@ -25,7 +25,7 @@ half of the delivery is switched off until you paste in a key.
 6. Save, commit, push. Within a minute the live site starts emailing you
    every appointment request and every contact enquiry.
 
-**Test it:** open your live `book.html`, submit a booking with your own
+**Test it:** open your live `/book` page, submit a booking with your own
 number, and check the inbox. The email arrives with the patient's name,
 phone, age, city, concern, preferred date and slot, and their notes.
 
@@ -43,7 +43,7 @@ No setup needed; confirm it behaves the way you want.
   the whole booking already typed out, addressed to +91 7481 908 030.
   They press send; it lands in your chat with their number attached.
 
-Open `book.html` on your phone, submit a test booking, and tap the button.
+Open `/book` on your phone, submit a test booking, and tap the button.
 
 ---
 
@@ -89,10 +89,13 @@ GitHub Pages serves the site free on your own domain, with HTTPS.
 
 3. DNS takes 15 minutes to a few hours.
 4. **Then tell me the domain** — the `<link rel="canonical">` tags,
-   `sitemap.xml` and the structured data still say
-   `hopehomeoclinic.github.io`. They must be changed to the real domain or
-   Google will keep indexing the old address. It is a one-line change and
-   a rebuild.
+   `sitemap.xml`, `robots.txt` and the structured data currently say
+   `https://ravi2978.github.io/hope-clinic`. They must be changed to the real
+   domain or Google will keep indexing the old address. It is a one-line
+   change and a rebuild.
+
+Page links and asset paths are relative, so they keep working at both
+addresses with no change — only the canonical URLs above need updating.
 
 ---
 
@@ -131,7 +134,7 @@ this website will show the clinic's real name too, automatically.
 
 ## Things worth confirming before you share the site widely
 
-- **Consultation fee ₹200** appears on `book.html` and `fees.html`. It is
+- **Consultation fee ₹200** appears on `/book` and `/fees`. It is
   not printed on the visiting card — confirm it is correct.
 - **Patient testimonials** on the home page describe specific outcomes
   (rheumatoid arthritis, ringworm, alopecia, kidney stones, PCOD). The
@@ -141,8 +144,8 @@ this website will show the clinic's real name too, automatically.
   (Objectionable Advertisements) Act restricts advertised cure claims,
   and invented testimonials would be a real problem for the clinic.
   **Tell me which they are and I will handle it.**
-- **Research citations** on `remedies.html` are still bracketed
+- **Research citations** on `/remedies` are still bracketed
   placeholders like `[Review title — to be filled]` and `[Journal]`.
   Either supply the real references or the placeholders should come out.
-- **Clinic photograph** on `about.html` is a branded placeholder. Drop a
+- **Clinic photograph** on `/about` is a branded placeholder. Drop a
   real photo in as `assets/clinic.png` and tell me — it is a one-line swap.

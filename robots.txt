@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hopehomeoclinic.github.io/sitemap.xml
+Sitemap: https://ravi2978.github.io/hope-clinic/sitemap.xml

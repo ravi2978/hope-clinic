@@ -14,19 +14,27 @@ register the clinic on Google Maps.
 
 ## Pages
 
-| File | Page |
-|---|---|
-| `index.html` | Home — hero, specialities, doctor, process, testimonials, map |
-| `about.html` | About Dr. Kumari and what homoeopathy is |
-| `treatments.html` | Eight conditions the clinic sees most |
-| `diet-charts.html` | Nine diet charts patients can follow at home |
-| `remedies.html` | Common remedies and research notes |
-| `book.html` | Appointment request form |
-| `fees.html` | Fees, weekly timings, FAQ |
-| `contact.html` | Address, directions, map, enquiry form |
+| URL | File | Page |
+|---|---|---|
+| `/` | `index.html` | Home — hero, specialities, doctor, process, testimonials, map |
+| `/about` | `about/index.html` | About Dr. Kumari and what homoeopathy is |
+| `/treatments` | `treatments/index.html` | Eight conditions the clinic sees most |
+| `/diet-charts` | `diet-charts/index.html` | Nine diet charts patients can follow at home |
+| `/remedies` | `remedies/index.html` | Common remedies and research notes |
+| `/book` | `book/index.html` | Appointment request form |
+| `/fees` | `fees/index.html` | Fees, weekly timings, FAQ |
+| `/contact` | `contact/index.html` | Address, directions, map, enquiry form |
 
-Deep links work too, e.g. `treatments.html#pcod`, `diet-charts.html#thyroid`,
-`fees.html#faq`.
+Each page is its own directory containing an `index.html`, which is what gives
+the clean addresses — `hopehomeoclinic.com/about`, not `/about.html`. Every
+static host serves it this way, so the site is not tied to GitHub Pages.
+
+Links between pages and to `assets/` are **relative**, never absolute, so the
+same files work unchanged at `ravi2978.github.io/hope-clinic/` and at a bare
+custom domain. Do not change them to start with `/`.
+
+Deep links work too, e.g. `/treatments#pcod`, `/diet-charts#thyroid`,
+`/fees#faq`.
 
 ## What happens when someone books
 
@@ -48,15 +56,19 @@ never silently lost.
 | Booking notifications, phone, WhatsApp number | `assets/config.js` |
 | Colours, spacing, hover, mobile nav, map card | `assets/site.css` |
 | Form behaviour, validation, menu | `assets/site.js` |
-| Page text | the `.html` file itself |
+| Page text | that page's `index.html` |
 
 Contact details appear in the header and footer of every page, so a phone
-number change means find-and-replace across all eight files.
+number change means find-and-replace across all eight `index.html` files.
 
 ## Layout
 
 ```
-index.html … contact.html   the site
+index.html                  home page, served at /
+about/index.html            served at /about
+treatments/index.html       served at /treatments
+diet-charts/  remedies/     …and so on for every page
+book/  fees/  contact/
 assets/                     logos, portrait, visiting card, site.css, site.js, config.js
 design-source/              original Claude Design canvas artboards (not served)
 uploads/                    original supplied artwork
@@ -70,7 +82,8 @@ from it, and nothing there needs to be edited to change the website.
 ## Hosting
 
 Any static host serves this. On GitHub Pages: **Settings → Pages → Deploy
-from a branch → `main` / `(root)`**.
+from a branch → `main` / `(root)`**. The site then appears at
+`https://ravi2978.github.io/hope-clinic/` until a custom domain is mapped.
 
 ## Details used throughout
 

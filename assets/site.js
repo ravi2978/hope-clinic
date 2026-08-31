@@ -3,6 +3,10 @@
   'use strict';
   var CFG = window.HHC_CONFIG || {};
   var $ = function (s, r) { return (r || document).querySelector(s); };
+  // Pages are served from their own directory (/about, /contact), so the path
+  // back to the home page is whatever the header logo already points at.
+  var HOME = (document.getElementById('home-link') || {}).getAttribute
+    ? document.getElementById('home-link').getAttribute('href') : '../';
 
   /* ---------------- mobile navigation ---------------- */
   var toggle = $('.nav-toggle'), nav = $('#site-nav');
@@ -169,7 +173,7 @@
             '<svg width="20" height="20" viewBox="0 0 24 24" fill="#0b3d1f"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 004.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2m5.8 14.16c-.25.69-1.44 1.32-1.99 1.4-.53.08-1.19.11-1.92-.12-.44-.14-1.01-.33-1.74-.64-3.06-1.32-5.06-4.4-5.21-4.6-.15-.2-1.25-1.66-1.25-3.17s.79-2.25 1.07-2.56c.28-.31.61-.38.81-.38.2 0 .41 0 .58.01.19.01.44-.07.69.53.25.61.86 2.11.94 2.26.08.15.13.33.02.53-.1.2-.16.33-.31.5-.15.18-.32.39-.46.53-.15.15-.31.32-.13.62.18.31.79 1.31 1.7 2.12 1.17 1.04 2.16 1.37 2.47 1.52.31.15.49.13.67-.08.18-.2.77-.9.98-1.21.2-.31.41-.25.69-.15.28.1 1.78.84 2.09.99.31.15.51.23.58.35.08.13.08.72-.17 1.41"/></svg>' +
             'Also send it on WhatsApp' +
           '</a>' +
-          '<a class="btn-ghost" href="index.html">Back to home</a>' +
+          '<a class="btn-ghost" href="' + HOME + '">Back to home</a>' +
         '</div>';
 
       var vals = [data.Name, data.Phone, data.Concern, data.Age, data.Preferred, data.City];
