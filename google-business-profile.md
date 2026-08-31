@@ -89,7 +89,7 @@ Google's limit is 750 characters. This one is within it — paste as is.
 ```
 Hope Homeo Clinic is a homoeopathic clinic at Jhanda Chowk on Khazanchi Road, Purnia, run by Dr. Chandani Kumari, B.H.M.S. (B.U.), Reg. No. 36342.
 
-Dr. Chandani Kumari sees every patient herself and takes a full case history — the complaint, sleep, appetite, past illness — before deciding on a remedy. Medicines are dispensed at the clinic, so there is nothing separate to buy outside. Patients are seen by appointment or as walk-ins, in order of arrival.
+Dr. Chandani Kumari sees every patient herself and takes a full case history — the complaint, sleep, appetite, past illness — before deciding on a remedy. Medicines are dispensed at the clinic, so there is no need to go to a chemist afterwards. Patients are seen by appointment or as walk-ins, in order of arrival.
 
 Concerns commonly seen here include hair fall, P.C.O.D., menstrual problems, piles, kidney stone, joint pain, skin conditions such as eczema and psoriasis, and child health.
 
@@ -169,9 +169,8 @@ only on the card the site draws over it.
 
 ---
 
-## One thing to confirm
+## Fee
 
-The website states a **₹200 consultation fee** on `/book` and `/fees`. It is
-not printed on the visiting card and has never been confirmed. It is
-deliberately left out of the description above. Confirm it is right — it is
-on a public website now.
+**₹200 is the consultation fee.** Medicines are dispensed at the clinic and
+charged separately. Deliberately left out of the description above — Google
+has its own price fields, and a fee in the description dates quickly.

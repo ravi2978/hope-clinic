@@ -141,8 +141,10 @@ this website will show the clinic's real name too, automatically.
 
 ## Things worth confirming before you share the site widely
 
-- **Consultation fee ₹200** appears on `/book` and `/fees`. It is
-  not printed on the visiting card — confirm it is correct.
+- **Consultation fee ₹200** — confirmed as the consultation only. Medicines
+  are dispensed at the clinic and charged separately; the site says so on
+  `/fees`, `/book`, `/about` and the home page. If you ever want the medicine
+  cost shown as well, tell me the figure and I will add it.
 - **Patient testimonials** on the home page describe specific outcomes
   (rheumatoid arthritis, ringworm, alopecia, kidney stones, PCOD). The
   original design notes call them written examples rather than real

@@ -27,7 +27,7 @@ a{color:#0E6B54}a:hover{color:#2F3E64}
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:clamp(18px,2.6vw,40px);margin-top:clamp(24px,3.4vw,44px);padding-top:clamp(20px,2.6vw,32px);border-top:1px solid rgba(176,134,60,.35)">
       <div>
         <div class="sr" style="font-size:clamp(34px,4.8vw,56px);line-height:1;color:#B0863C">₹200</div>
-        <div style="font-size:clamp(13px,1.5vw,15px);line-height:1.7;color:rgba(248,244,235,.72);margin-top:10px">Per person, per visit. Consultation and medicines included, first visit and follow-ups alike.</div>
+        <div style="font-size:clamp(13px,1.5vw,15px);line-height:1.7;color:rgba(248,244,235,.72);margin-top:10px">Per person, per visit — the consultation. The same for a first visit and for follow-ups.</div>
       </div>
       <div>
         <div class="sr" style="font-size:clamp(26px,3.6vw,44px);line-height:1.1;color:#F8F4EB">10 am – 5 pm</div>
@@ -101,14 +101,14 @@ class Component extends DCLogic {
       covers: [
         {k: 'First consultation', v: '₹200', color: '#2F3E64'},
         {k: 'Every follow-up visit', v: '₹200', color: '#2F3E64'},
-        {k: 'Medicines dispensed at the clinic', v: 'Included', color: '#0E6B54'},
+        {k: 'Medicines dispensed at the clinic', v: 'Charged separately', color: '#2F3E64'},
         {k: 'Diet chart for your condition', v: 'Included', color: '#0E6B54'},
         {k: 'Lab tests and scans, if needed', v: 'Not included', color: 'rgba(35,35,31,.55)'},
       ],
       faqs: [
         {q: 'How long is a consultation?', a: 'A first consultation usually takes twenty to thirty minutes, because the history is taken in detail. Follow-ups are shorter.'},
         {q: 'Do I need an appointment?', a: 'No. Walk-in patients are seen in the order they arrive. An appointment only saves you waiting time.'},
-        {q: 'Are medicines given at the clinic?', a: 'Yes. Medicines are dispensed here and are included in the ₹200 fee. There is nothing separate to buy outside.'},
+        {q: 'Are medicines given at the clinic?', a: 'Yes. Medicines are dispensed here, so there is no need to go to a chemist afterwards. They are charged separately from the ₹200 consultation fee.'},
         {q: 'How many follow-ups will I need?', a: 'It depends on the complaint. Most patients are reviewed once a month, and the plan is discussed with you at the first visit.'},
         {q: 'Can homoeopathy be taken with my other medicines?', a: 'Usually yes, but tell Dr. Chandani Kumari everything you are taking. Never stop a prescribed allopathic medicine on your own.'},
         {q: 'Is it safe for children and during pregnancy?', a: 'Doses for children are small and pleasant to take. If you are pregnant, say so at the start of the consultation.'},
